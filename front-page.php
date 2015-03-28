@@ -38,6 +38,6 @@ get_header();
             
         </div>
     </section>
-<?php endif; ?>
-<?php
+<?php endif; 
+
 get_footer();

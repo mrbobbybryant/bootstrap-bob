@@ -250,3 +250,45 @@ function bootstrap_bob_meta_save( $post_id ) {
     }
 }
 add_action( 'save_post', 'bootstrap_bob_meta_save' );
+
+
+
+function add_extra_social_links( $user ) {
+    ?>
+        <h3>New User Profile Links</h3>
+
+        <table class="form-table">
+            <tr>
+                <th><label for="facebook_profile">Facebook Profile</label></th>
+                <td><input type="text" name="facebook_profile" value="<?php if ( !empty( get_the_author_meta( 'facebook_profile', $user->ID ) ) ) echo esc_attr(get_the_author_meta( 'facebook_profile', $user->ID )); ?>" class="regular-text" /></td>
+            </tr>
+
+            <tr>
+                <th><label for="twitter_profile">Twitter Profile</label></th>
+                <td><input type="text" name="twitter_profile" value="<?php if ( !empty( get_the_author_meta( 'twitter_profile', $user->ID ) ) ) echo esc_attr(get_the_author_meta( 'twitter_profile', $user->ID )); ?>" class="regular-text" /></td>
+            </tr>
+
+            <tr>
+                <th><label for="google_profile">Google+ Profile</label></th>
+                <td><input type="text" name="google_profile" value="<?php if ( !empty( get_the_author_meta( 'google_profile', $user->ID ) ) ) echo esc_attr(get_the_author_meta( 'google_profile', $user->ID )); ?>" class="regular-text" /></td>
+            </tr>
+            <tr>
+                <th><label for="linkedin_profile">LinkedIn Profile</label></th>
+                <td><input type="text" name="linkedin_profile" value="<?php if ( !empty( get_the_author_meta( 'linkedin_profile', $user->ID ) ) ) echo esc_attr(get_the_author_meta( 'google_profile', $user->ID )); ?>" class="regular-text" /></td>
+            </tr>
+        </table>
+    <?php
+}
+add_action( 'show_user_profile', 'add_extra_social_links' );
+add_action( 'edit_user_profile', 'add_extra_social_links' );
+
+
+
+function save_extra_social_links( $user_id ) {
+    update_user_meta( $user_id,'facebook_profile', sanitize_text_field( $_POST['facebook_profile'] ) );
+    update_user_meta( $user_id,'twitter_profile', sanitize_text_field( $_POST['twitter_profile'] ) );
+    update_user_meta( $user_id,'google_profile', sanitize_text_field( $_POST['google_profile'] ) );
+    update_user_meta( $user_id,'linkedin_profile', sanitize_text_field( $_POST['linkedin_profile'] ) );
+}
+add_action( 'personal_options_update', 'save_extra_social_links' );
+add_action( 'edit_user_profile_update', 'save_extra_social_links' );
