@@ -40,4 +40,20 @@ get_header();
     </section>
 <?php endif; 
 
+$args = array (
+  'role' => 'administrator',
+  'order' => 'DESC',
+  'fields' => array(
+        'display_name',
+        'ID'
+    )
+);
+$user_query = new WP_User_Query( $args );
+$users = $user_query->get_results();
+    foreach ($users as $staff) {
+        $twitter = get_the_author_meta( 'twitter_profile', $staff->ID );
+        echo '<h3>' . $twitter . '</h3>';    
+    }
+
+
 get_footer();
