@@ -48,6 +48,9 @@ function bootstrap_bob_setup() {
 	 */
 	add_theme_support( 'post-thumbnails' );
 
+	add_image_size('staff', 225, 225, false );
+	add_image_size('portfolio', 300, 300, false );
+
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus( array(
 		'primary' => __( 'Primary Menu', 'bootstrap_bob' ),
@@ -115,6 +118,13 @@ function bootstrap_bob_scripts() {
 	}
 }
 add_action( 'wp_enqueue_scripts', 'bootstrap_bob_scripts' );
+
+function bootstrap_bob_admin_scripts() {
+
+	wp_enqueue_script( 'bootstrap-bob-js', get_template_directory_uri() . '/js/bootstrap-bob.js', array( 'jquery' ), '20150330', true );
+	wp_enqueue_media();
+}
+add_action( 'admin_enqueue_scripts', 'bootstrap_bob_admin_scripts' );
 
 /**
  * Implement the Custom Header feature.
@@ -276,9 +286,26 @@ function add_extra_social_links( $user ) {
             </tr>
             <tr>
                 <th><label for="linkedin_profile">LinkedIn Profile</label></th>
-                <td><input type="text" name="linkedin_profile" value="<?php if ( !empty( get_the_author_meta( 'linkedin_profile', $user->ID ) ) ) echo esc_attr(get_the_author_meta( 'google_profile', $user->ID )); ?>" class="regular-text" /></td>
+                <td><input type="text" name="linkedin_profile" value="<?php if ( !empty( get_the_author_meta( 'linkedin_profile', $user->ID ) ) ) echo esc_attr(get_the_author_meta( 'linkedin_profile', $user->ID )); ?>" class="regular-text" /></td>
             </tr>
         </table>
+        <h3>User Profile Picture</h3>
+
+        <table>
+            <tr>
+                <th><label for="upload_image">Enter a URL or upload an image.</label></th>
+                <td><input id="upload_image" type="text" size="36" name="upload_image" value="<?php if ( !empty( get_the_author_meta( 'upload_image', $user->ID ) ) ) echo esc_attr(get_the_author_meta( 'upload_image', $user->ID )); ?>" /></td>
+                <td><input id="upload_image_button" class="button" type="button" value="Upload Image" /></td>
+            </tr>
+        </table>
+        <h3>Job Title</h3>
+
+        <table class="form-table">
+            <tr>
+                <th><label for="user_title">Job Title</label></th>
+                <td><input type="text" name="user_title" value="<?php if ( !empty( get_the_author_meta( 'user_title', $user->ID ) ) ) echo esc_attr(get_the_author_meta( 'user_title', $user->ID )); ?>" class="regular-text" /></td>
+            </tr>
+        </table>    
     <?php
 }
 add_action( 'show_user_profile', 'add_extra_social_links' );
@@ -291,6 +318,10 @@ function save_extra_social_links( $user_id ) {
     update_user_meta( $user_id,'twitter_profile', sanitize_text_field( $_POST['twitter_profile'] ) );
     update_user_meta( $user_id,'google_profile', sanitize_text_field( $_POST['google_profile'] ) );
     update_user_meta( $user_id,'linkedin_profile', sanitize_text_field( $_POST['linkedin_profile'] ) );
+    update_user_meta( $user_id,'upload_image', sanitize_text_field( $_POST['upload_image'] ) );
+    update_user_meta( $user_id,'user_title', sanitize_text_field( $_POST['user_title'] ) );
 }
 add_action( 'personal_options_update', 'save_extra_social_links' );
 add_action( 'edit_user_profile_update', 'save_extra_social_links' );
+
+
