@@ -26,7 +26,7 @@ get_header();
                             </div>
                         </div>
                         <div class="img-responsive">
-                        	<?php the_post_thumbnail(); ?>
+                        	<?php the_post_thumbnail('portfolio'); ?>
                         </div>
                     </a>
                     <div class="portfolio-caption">
@@ -40,20 +40,6 @@ get_header();
     </section>
 <?php endif; 
 
-$args = array (
-  'role' => 'administrator',
-  'order' => 'DESC',
-  'fields' => array(
-        'display_name',
-        'ID'
-    )
-);
-$user_query = new WP_User_Query( $args );
-$users = $user_query->get_results();
-    foreach ($users as $staff) {
-        $twitter = get_the_author_meta( 'twitter_profile', $staff->ID );
-        echo '<h3>' . $twitter . '</h3>';    
-    }
-
+get_template_part('content', 'staff');
 
 get_footer();

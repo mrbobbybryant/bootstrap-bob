@@ -969,4 +969,124 @@ object {
     margin-bottom: 15px;
     font-size: 40px;
 }
+.team-member {
+    margin-bottom: 50px;
+    text-align: center;
+}
 
+.team-member img {
+    margin: 0 auto;
+    border: 7px solid #fff;
+}
+
+.team-member h4 {
+    margin-top: 25px;
+    margin-bottom: 0;
+    text-transform: none;
+}
+
+.team-member p {
+    margin-top: 0;
+}
+.text-muted {
+    color: #777;
+}
+.portfolio-modal .modal-content {
+    padding: 100px 0;
+    min-height: 100%;
+    border: 0;
+    border-radius: 0;
+    text-align: center;
+    background-clip: border-box;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.portfolio-modal .modal-content h2 {
+    margin-bottom: 15px;
+    font-size: 3em;
+}
+
+.portfolio-modal .modal-content p {
+    margin-bottom: 30px;
+}
+
+.portfolio-modal .modal-content p.item-intro {
+    margin: 20px 0 30px;
+    font-family: "Droid Serif","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 16px;
+    font-style: italic;
+}
+
+.portfolio-modal .modal-content ul.list-inline {
+    margin-top: 0;
+    margin-bottom: 30px;
+}
+
+.portfolio-modal .modal-content img {
+    margin-bottom: 30px;
+}
+
+.portfolio-modal .close-modal {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    width: 75px;
+    height: 75px;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.portfolio-modal .close-modal:hover {
+    opacity: .3;
+}
+
+.portfolio-modal .close-modal .lr {
+    z-index: 1051;
+    width: 1px;
+    height: 75px;
+    margin-left: 35px;
+    background-color: #222;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.portfolio-modal .close-modal .lr .rl {
+    z-index: 1052;
+    width: 1px;
+    height: 75px;
+    background-color: #222;
+    -webkit-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+
+.portfolio-modal .modal-backdrop {
+    display: none;
+    opacity: 0;
+}
+ul.social-buttons {
+    margin-bottom: 0;
+}
+
+ul.social-buttons li a {
+    display: block;
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    font-size: 20px;
+    line-height: 40px;
+    outline: 0;
+    color: #fff;
+    background-color: #222;
+    -webkit-transition: all .3s;
+    -moz-transition: all .3s;
+    transition: all .3s;
+}
+
+ul.social-buttons li a:hover,
+ul.social-buttons li a:focus,
+ul.social-buttons li a:active {
+    background-color: #fed136;
+}
