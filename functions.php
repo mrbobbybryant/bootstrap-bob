@@ -111,7 +111,12 @@ function bootstrap_bob_scripts() {
 	wp_enqueue_style ( 'bootstrap-core', get_template_directory_uri() . '/css/bootstrap.css', '3.3.4' );
 	wp_enqueue_script( 'bootstrap-js', get_template_directory_uri() . '/js/bootstrap.js', array( 'jquery' ), '3.3.4', true );
 
+	// Enqueue icons and fonts
 	wp_enqueue_style ( 'font-awesome', 'http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css', array(), '4.3.0' );
+	wp_enqueue_style ( 'font-montserrat', 'http://fonts.googleapis.com/css?family=Montserrat:400,700', array(), '20150331' );
+	wp_enqueue_style ( 'font-kaushan', 'http://fonts.googleapis.com/css?family=Kaushan+Script', array(), '20150331' );
+	wp_enqueue_style ( 'font-droid-serif', 'http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic', array(), '20150331' );
+	wp_enqueue_style ( 'font-Roboto', 'http://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700', array(), '20150331' );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
@@ -150,6 +155,11 @@ require get_template_directory() . '/inc/customizer.php';
  * Load Jetpack compatibility file.
  */
 require get_template_directory() . '/inc/jetpack.php';
+
+/**
+ * Load Theme Options.
+ */
+require get_template_directory() . '/theme-options.php';
 
 function bootstrap_bob_post_type() {
 	
