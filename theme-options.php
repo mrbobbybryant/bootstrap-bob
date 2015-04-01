@@ -41,6 +41,14 @@ function bootstrap_bob_settings_init(  ) {
 		'bootstrap_bob_homepage_section' 
 	);
 
+	add_settings_field( 
+		'bootstrap_bob_upload_field_1', 
+		__( 'Homepage Background Image', 'bootstrap_bob' ), 
+		'bootstrap_bob_upload_field_1_render', 
+		'theme_options', 
+		'bootstrap_bob_homepage_section' 
+	);
+
 
 }
 
@@ -70,6 +78,15 @@ function bootstrap_bob_text_field_2_render(  ) {
 	<?php
 
 }
+
+function bootstrap_bob_upload_field_1_render() {
+
+	$options = get_option( 'bootstrap_bob_settings' );
+	?>
+	<input id="upload_image" type="text" size="36" name="bootstrap_bob_settings[bootstrap_bob_upload_field_1]" value="<?php echo $options['bootstrap_bob_upload_field_1']; ?>" />
+    <input id="upload_image_button" class="button" type="button" value="Upload Image" />
+	<?php
+}
 add_action( 'admin_init', 'bootstrap_bob_settings_init' );
 
 function bootstrap_bob_theme_options() {
@@ -92,3 +109,19 @@ function bootstrap_bob_settings_section_callback(  ) {
 	echo __( 'This section controls the above the fold area on the homepage.', 'bootstrap_bob' );
 
 }
+
+//output background image styles
+function bootstrap_bob_hook_css() {
+	$options = get_option( 'bootstrap_bob_settings' );
+
+	$output="<style> header { background-image: url(" . $options[ 'bootstrap_bob_upload_field_1' ] . "); 
+	background-position: center center;
+    background-repeat: none;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover; } </style>";
+    echo $output;
+}
+add_action( 'wp_head', 'bootstrap_bob_hook_css' );
+
