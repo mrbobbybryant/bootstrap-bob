@@ -51,7 +51,8 @@ function bootstrap_bob_about_post_type() {
 	        ),
 	        'supports'            => array( 
 	        	'title',
-	        	'thumbnail'
+	        	'thumbnail',
+	        	'editor'
 	        )
 	);
 	register_post_type( $singular, $args );
@@ -72,6 +73,37 @@ function bootsrap_bob_about_metabox() {
 }
 add_action( 'add_meta_boxes', 'bootsrap_bob_about_metabox' );
 
-function bootstrap_bob_about_callback() {
-	echo 'this is my metabox';
+function bootstrap_bob_about_callback($post) {
+	wp_nonce_field( basename( __FILE__ ), 'bootstrap_bob_about_nonce' );
+    $about_stored_meta = get_post_meta( $post->ID );
+    ?>
+    <div>
+      <div class="meta-row">
+          <div class="meta-th">
+            <label for="event-date" class="hrm-row-title"><?php _e( 'Event Date', 'bootstrap_bob' )?></label>
+          </div>
+          <div class="meta-td">
+            <input type="text" name="event-date" id="event-date" value="<?php if ( !empty ( $about_stored_meta['event-date'] ) ) echo esc_attr( $about_stored_meta['event-date'][0] ); ?>" />
+          </div>
+      </div>
+    </div>
+   <?php
 }
+/**
+ * Saves the portfolio custom meta input
+ */
+function bootstrap_bob_about_save( $post_id ) {
+    // Checks save status
+    $is_autosave = wp_is_post_autosave( $post_id );
+    $is_revision = wp_is_post_revision( $post_id );
+    $is_valid_nonce = ( isset( $_POST[ 'bootstrap_bob_about_nonce' ] ) && wp_verify_nonce( $_POST[ 'bootstrap_bob_about_nonce' ], basename( __FILE__ ) ) ) ? 'true' : 'false';
+    // Exits script depending on save status
+    if ( $is_autosave || $is_revision || !$is_valid_nonce ) {
+        return;
+    }
+    // Checks for input and sanitizes/saves if needed
+    if( isset( $_POST[ 'event-date' ] ) ) {
+        update_post_meta( $post_id, 'event-date', sanitize_text_field( $_POST[ 'event-date' ] ) );
+    }
+}
+add_action( 'save_post', 'bootstrap_bob_about_save' );
