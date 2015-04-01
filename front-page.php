@@ -6,6 +6,8 @@ get_template_part( 'content', 'home' );
 
 get_template_part( 'content', 'portfolio' ); 
 
+get_template_part( 'content', 'about' );
+
 get_template_part( 'content', 'staff' );
 
 get_footer();
