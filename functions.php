@@ -182,6 +182,20 @@ function bootstrap_bob_portfolio(){
 }
 
 /**
+ * Create custom about section query.
+ */
+function bootstrap_bob_about(){
+	$args = array( 
+		'post_type' => 'about',
+		'order' => 'ASC'
+	)
+	;
+	$about = new WP_Query( $args );
+
+	return $about;
+}
+
+/**
  * Create Custom User Profile fields.
  */
 function add_extra_social_links( $user ) {
