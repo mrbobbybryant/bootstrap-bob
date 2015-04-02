@@ -106,8 +106,12 @@ function bootstrap_bob_scripts() {
 	
 	wp_enqueue_script( 'bootstrap_bob-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20120206', true );
 	wp_enqueue_script( 'bootstrap_bob-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20130115', true );
+	
+	// Enqueue Navgation Js Files
 	wp_enqueue_script( 'classie-js', get_template_directory_uri() . '/js/classie.js', array(), '', true );
 	wp_enqueue_script( 'bootstrap_bob-nav', get_template_directory_uri() . '/js/bootstrap-bob-nav.js', array('classie-js'), '20150401', true );
+	
+	// Enqueue Contact from front-end validation
 	wp_enqueue_script( 'contact_me', get_template_directory_uri() . '/js/contact_me.js', array('jqBootstrapValidation'), '20150402', true );
 	wp_enqueue_script( 'jqBootstrapValidation', get_template_directory_uri() . '/js/jqBootstrapValidation.js', array(), '20150402', true );
 
@@ -131,7 +135,7 @@ function bootstrap_bob_scripts() {
 add_action( 'wp_enqueue_scripts', 'bootstrap_bob_scripts' );
 
 function bootstrap_bob_admin_scripts() {
-
+	//Enqueue js files for custom upload button.
 	wp_enqueue_script( 'bootstrap-bob-js', get_template_directory_uri() . '/js/bootstrap-bob.js', array( 'jquery' ), '20150330', true );
 	wp_enqueue_media();
 }
