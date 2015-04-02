@@ -20,6 +20,10 @@
 <body <?php body_class("index"); ?> id="page-top">
 	<!-- Navigation -->
     <nav class="navbar navbar-default navbar-fixed-top">
+        <?php 
+          // Fix menu overlap bug..
+          if ( is_admin_bar_showing() ) echo '<div style="min-height: 28px;"></div>'; 
+        ?>
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header page-scroll">
