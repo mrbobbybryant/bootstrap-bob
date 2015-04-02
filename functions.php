@@ -103,7 +103,7 @@ add_action( 'widgets_init', 'bootstrap_bob_widgets_init' );
  * Enqueue scripts and styles.
  */
 function bootstrap_bob_scripts() {
-	wp_enqueue_style( 'bootstrap_bob-style', get_stylesheet_uri() );
+	
 	wp_enqueue_script( 'bootstrap_bob-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20120206', true );
 	wp_enqueue_script( 'bootstrap_bob-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20130115', true );
 
@@ -117,6 +117,8 @@ function bootstrap_bob_scripts() {
 	wp_enqueue_style ( 'font-kaushan', 'http://fonts.googleapis.com/css?family=Kaushan+Script', array(), '20150331' );
 	wp_enqueue_style ( 'font-droid-serif', 'http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic', array(), '20150331' );
 	wp_enqueue_style ( 'font-Roboto', 'http://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700', array(), '20150331' );
+
+	wp_enqueue_style( 'bootstrap_bob-style', get_stylesheet_uri() );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
@@ -259,4 +261,7 @@ function save_extra_social_links( $user_id ) {
 add_action( 'personal_options_update', 'save_extra_social_links' );
 add_action( 'edit_user_profile_update', 'save_extra_social_links' );
 
-
+function add_menuclass($ulclass) {
+return preg_replace('/<a rel="page-scroll"/', '<a rel="nofollow" class="page-scroll"', $ulclass, 1);
+}
+add_filter('wp_nav_menu','add_menuclass');
