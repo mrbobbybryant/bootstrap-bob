@@ -49,7 +49,7 @@ function bootstrap_bob_setup() {
 	add_theme_support( 'post-thumbnails' );
 
 	add_image_size('staff', 225, 225, false );
-	add_image_size('portfolio', 350, false );
+	add_image_size('portfolio', 600, 450, true );
 
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus( array(
