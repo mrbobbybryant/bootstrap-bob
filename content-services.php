@@ -11,6 +11,7 @@ $services_content_2 = $options['bootstrap_bob_services_content_2'];
 $services_icon_3 = $options['bootstrap_bob_services_icon_3'];
 $services_title_3 = $options['bootstrap_bob_services_title_3'];
 $services_content_3 = $options['bootstrap_bob_services_content_3'];
+
 ?>
 
 <!-- Services Section -->
