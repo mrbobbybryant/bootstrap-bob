@@ -6,7 +6,7 @@ $cta_button = $options['bootstrap_bob_text_field_2'];
  ?>
 
 <!-- Header -->
-    <header class="header-bg">
+    <header>
         <div class="container">
             <div class="intro-text">
                 <div class="intro-lead-in"><?php echo $lead_in; ?></div>
