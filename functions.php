@@ -49,7 +49,7 @@ function bootstrap_bob_setup() {
 	add_theme_support( 'post-thumbnails' );
 
 	add_image_size('staff', 225, 225, false );
-	add_image_size('portfolio', 300, 300, false );
+	add_image_size('portfolio', 350, false );
 
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus( array(
@@ -106,6 +106,9 @@ function bootstrap_bob_scripts() {
 	
 	wp_enqueue_script( 'bootstrap_bob-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20120206', true );
 	wp_enqueue_script( 'bootstrap_bob-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20130115', true );
+	wp_enqueue_script( 'classie-js', get_template_directory_uri() . '/js/classie.js', array(), '', true );
+	wp_enqueue_script( 'bootstrap_bob-nav', get_template_directory_uri() . '/js/bootstrap-bob-nav.js', array('classie-js'), '20150401', true );
+
 
 	//Enqueue Bootstrap Scripts and Styles
 	wp_enqueue_style ( 'bootstrap-core', get_template_directory_uri() . '/css/bootstrap.css', '3.3.4' );
