@@ -17,7 +17,7 @@
 <?php wp_head(); ?>
 </head>
 
-<body <?php body_class(); ?>>
+<body <?php body_class("index"); ?> id="page-top">
 	<!-- Navigation -->
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container">
@@ -33,15 +33,14 @@
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu' ) ); ?>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
+            <?php wp_nav_menu( array( 
+                'theme_location' => 'primary',
+                'container_class' => 'collapse navbar-collapse',
+                'container_id' => 'bs-example-navbar-collapse-1',
+                'menu_class' => 'nav navbar-nav navbar-right',
+                'menu_id' => 'primary-menu'
+                ) ); 
+            ?>
         </div>
         <!-- /.container-fluid -->
     </nav>
-
-
-	<div id="content" class="site-content">
