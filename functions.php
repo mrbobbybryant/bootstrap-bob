@@ -268,3 +268,6 @@ function add_menuclass($ulclass) {
 return preg_replace('/<a rel="page-scroll"/', '<a rel="nofollow" class="page-scroll"', $ulclass, 1);
 }
 add_filter('wp_nav_menu','add_menuclass');
+
+
+
