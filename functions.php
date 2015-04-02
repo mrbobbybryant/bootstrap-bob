@@ -108,7 +108,8 @@ function bootstrap_bob_scripts() {
 	wp_enqueue_script( 'bootstrap_bob-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20130115', true );
 	wp_enqueue_script( 'classie-js', get_template_directory_uri() . '/js/classie.js', array(), '', true );
 	wp_enqueue_script( 'bootstrap_bob-nav', get_template_directory_uri() . '/js/bootstrap-bob-nav.js', array('classie-js'), '20150401', true );
-
+	wp_enqueue_script( 'contact_me', get_template_directory_uri() . '/js/contact_me.js', array('jqBootstrapValidation'), '20150402', true );
+	wp_enqueue_script( 'jqBootstrapValidation', get_template_directory_uri() . '/js/jqBootstrapValidation.js', array(), '20150402', true );
 
 	//Enqueue Bootstrap Scripts and Styles
 	wp_enqueue_style ( 'bootstrap-core', get_template_directory_uri() . '/css/bootstrap.css', '3.3.4' );
@@ -177,6 +178,11 @@ require get_template_directory() . '/inc/cpt-about.php';
 require get_template_directory() . '/inc/cpt-portfolio.php';
 
 /**
+ * Load Portfolio Custom Post Type.
+ */
+require get_template_directory() . '/inc/cpt-clients.php';
+
+/**
  * Create custom portfolio query.
  */
 function bootstrap_bob_portfolio(){
@@ -184,6 +190,16 @@ function bootstrap_bob_portfolio(){
 	$folio = new WP_Query( $args );
 
 	return $folio;
+}
+
+/**
+ * Create custom portfolio query.
+ */
+function bootstrap_bob_clients(){
+	$args = array( 'post_type' => 'client' );
+	$clients = new WP_Query( $args );
+
+	return $clients;
 }
 
 /**
