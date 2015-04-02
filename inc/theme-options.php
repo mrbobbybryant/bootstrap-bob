@@ -53,9 +53,9 @@ function bootstrap_bob_settings_init(  ) {
 		'bootstrap_bob_homepage_section' 
 	);
 
-	/**
- * Register content-services.php settings.
- */
+/**
+* Register content-services.php settings.
+*/
 	add_settings_section(
 		'bootstrap_bob_services_section', 
 		__( 'Services Section Options', 'bootstrap_bob' ), 
@@ -64,31 +64,79 @@ function bootstrap_bob_settings_init(  ) {
 	);
 
 	add_settings_field( 
-		'bootstrap_bob_services_icon', 
-		__( 'Services Icon', 'bootstrap_bob' ), 
-		'bootstrap_bob_services_icon_render', 
+		'bootstrap_bob_services_icon_1', 
+		__( 'Services Icon One', 'bootstrap_bob' ), 
+		'bootstrap_bob_services_icon_1_render', 
 		'services_options', 
 		'bootstrap_bob_services_section' 
 	);
 
 	add_settings_field( 
-		'bootstrap_bob_services_title', 
-		__( 'Services Title', 'bootstrap_bob' ), 
-		'bootstrap_bob_services_title_render', 
+		'bootstrap_bob_services_title_1', 
+		__( 'Services Title One', 'bootstrap_bob' ), 
+		'bootstrap_bob_services_title_1_render', 
 		'services_options', 
 		'bootstrap_bob_services_section' 
 	);
 
 	add_settings_field( 
-		'bootstrap_bob_services_content', 
-		__( 'Services Content Area', 'bootstrap_bob' ), 
-		'bootstrap_bob__services_content_render', 
+		'bootstrap_bob_services_content_1', 
+		__( 'Services Content Area One', 'bootstrap_bob' ), 
+		'bootstrap_bob__services_content_1_render', 
+		'services_options', 
+		'bootstrap_bob_services_section' 
+	);
+	add_settings_field( 
+		'bootstrap_bob_services_icon_2', 
+		__( 'Services Icon Two', 'bootstrap_bob' ), 
+		'bootstrap_bob_services_icon_2_render', 
+		'services_options', 
+		'bootstrap_bob_services_section' 
+	);
+
+	add_settings_field( 
+		'bootstrap_bob_services_title_2', 
+		__( 'Services Title Two', 'bootstrap_bob' ), 
+		'bootstrap_bob_services_title_2_render', 
+		'services_options', 
+		'bootstrap_bob_services_section' 
+	);
+
+	add_settings_field( 
+		'bootstrap_bob_services_content_2', 
+		__( 'Services Content Area Two', 'bootstrap_bob' ), 
+		'bootstrap_bob__services_content_2_render', 
+		'services_options', 
+		'bootstrap_bob_services_section' 
+	);
+	add_settings_field( 
+		'bootstrap_bob_services_icon_3', 
+		__( 'Services Icon Three', 'bootstrap_bob' ), 
+		'bootstrap_bob_services_icon_3_render', 
+		'services_options', 
+		'bootstrap_bob_services_section' 
+	);
+
+	add_settings_field( 
+		'bootstrap_bob_services_title_3', 
+		__( 'Services Title Three', 'bootstrap_bob' ), 
+		'bootstrap_bob_services_title_3_render', 
+		'services_options', 
+		'bootstrap_bob_services_section' 
+	);
+
+	add_settings_field( 
+		'bootstrap_bob_services_content_3', 
+		__( 'Services Content Area Three', 'bootstrap_bob' ), 
+		'bootstrap_bob__services_content_3_render', 
 		'services_options', 
 		'bootstrap_bob_services_section' 
 	);
 
 }
-
+/**
+* Render content-home.php settings.
+*/
 function bootstrap_bob_text_field_0_render(  ) { 
 
 	$options = get_option( 'bootstrap_bob_settings' );
@@ -125,33 +173,93 @@ function bootstrap_bob_upload_field_1_render() {
 	<?php
 }
 
-//services renders
-function bootstrap_bob_services_icon_render(  ) { 
+/**
+* Render First content-services.php settings.
+*/
+function bootstrap_bob_services_icon_1_render(  ) { 
 
 	$options = get_option( 'bootstrap_bob_settings' );
 	?>
-	<input type='text' name='bootstrap_bob_settings[bootstrap_bob_services_icon]' value='<?php if( !empty( $options[ 'bootstrap_bob_services_icon' ] ) ) echo $options['bootstrap_bob_services_icon']; ?>'>
+	<input type='text' name='bootstrap_bob_settings[bootstrap_bob_services_icon_1]' value='<?php if( !empty( $options[ 'bootstrap_bob_services_icon_1' ] ) ) echo $options['bootstrap_bob_services_icon_1']; ?>'>
 	<?php
 
 }
 
-function bootstrap_bob_services_title_render(  ) { 
+function bootstrap_bob_services_title_1_render(  ) { 
 
 	$options = get_option( 'bootstrap_bob_settings' );
 	?>
-	<input type='text' name='bootstrap_bob_settings[bootstrap_bob_services_title]' value='<?php if( !empty( $options[ 'bootstrap_bob_services_title' ] ) ) echo $options[ 'bootstrap_bob_services_title' ]; ?>'>
+	<input type='text' name='bootstrap_bob_settings[bootstrap_bob_services_title_1]' value='<?php if( !empty( $options[ 'bootstrap_bob_services_title_1' ] ) ) echo $options[ 'bootstrap_bob_services_title_1' ]; ?>'>
 	<?php
 
 }
 
-function bootstrap_bob__services_content_render(  ) { 
+function bootstrap_bob__services_content_1_render(  ) { 
 
 	$options = get_option( 'bootstrap_bob_settings' );
 	?>
-	<textarea cols="60" rows="10" name='bootstrap_bob_settings[bootstrap_bob_services_content]'><?php if( !empty( $options[ 'bootstrap_bob_services_content' ] ) ) echo $options['bootstrap_bob_services_content']; ?></textarea>
+	<textarea cols="60" rows="10" name='bootstrap_bob_settings[bootstrap_bob_services_content_1]'><?php if( !empty( $options[ 'bootstrap_bob_services_content_1' ] ) ) echo $options['bootstrap_bob_services_content_1']; ?></textarea>
 	<?php
 
-}	
+}
+/**
+* Render Second content-services.php settings.
+*/
+function bootstrap_bob_services_icon_2_render(  ) { 
+
+	$options = get_option( 'bootstrap_bob_settings' );
+	?>
+	<input type='text' name='bootstrap_bob_settings[bootstrap_bob_services_icon_2]' value='<?php if( !empty( $options[ 'bootstrap_bob_services_icon_2' ] ) ) echo $options['bootstrap_bob_services_icon_2']; ?>'>
+	<?php
+
+}
+
+function bootstrap_bob_services_title_2_render(  ) { 
+
+	$options = get_option( 'bootstrap_bob_settings' );
+	?>
+	<input type='text' name='bootstrap_bob_settings[bootstrap_bob_services_title_2]' value='<?php if( !empty( $options[ 'bootstrap_bob_services_title_2' ] ) ) echo $options[ 'bootstrap_bob_services_title_2' ]; ?>'>
+	<?php
+
+}
+
+function bootstrap_bob__services_content_2_render(  ) { 
+
+	$options = get_option( 'bootstrap_bob_settings' );
+	?>
+	<textarea cols="60" rows="10" name='bootstrap_bob_settings[bootstrap_bob_services_content_2]'><?php if( !empty( $options[ 'bootstrap_bob_services_content_2' ] ) ) echo $options['bootstrap_bob_services_content_2']; ?></textarea>
+	<?php
+
+}
+/**
+* Render Third content-services.php settings.
+*/
+function bootstrap_bob_services_icon_3_render(  ) { 
+
+	$options = get_option( 'bootstrap_bob_settings' );
+	?>
+	<input type='text' name='bootstrap_bob_settings[bootstrap_bob_services_icon_3]' value='<?php if( !empty( $options[ 'bootstrap_bob_services_icon_3' ] ) ) echo $options['bootstrap_bob_services_icon_3']; ?>'>
+	<?php
+
+}
+
+function bootstrap_bob_services_title_3_render(  ) { 
+
+	$options = get_option( 'bootstrap_bob_settings' );
+	?>
+	<input type='text' name='bootstrap_bob_settings[bootstrap_bob_services_title_3]' value='<?php if( !empty( $options[ 'bootstrap_bob_services_title_3' ] ) ) echo $options[ 'bootstrap_bob_services_title_3' ]; ?>'>
+	<?php
+
+}
+
+function bootstrap_bob__services_content_3_render(  ) { 
+
+	$options = get_option( 'bootstrap_bob_settings' );
+	?>
+	<textarea cols="60" rows="10" name='bootstrap_bob_settings[bootstrap_bob_services_content_3]'><?php if( !empty( $options[ 'bootstrap_bob_services_content_3' ] ) ) echo $options['bootstrap_bob_services_content_3']; ?></textarea>
+	<?php
+
+}
 add_action( 'admin_init', 'bootstrap_bob_settings_init' );
 
 /**

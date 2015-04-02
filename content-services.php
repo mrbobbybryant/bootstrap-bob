@@ -1,8 +1,16 @@
 <?php
 $options = get_option( 'bootstrap_bob_settings' );
-$services_icon1 = $options['bootstrap_bob_services_icon'];
-$services_title1 = $options['bootstrap_bob_services_title'];
-$services_content1 = $options['bootstrap_bob_services_content'];
+$services_icon_1 = $options['bootstrap_bob_services_icon_1'];
+$services_title_1 = $options['bootstrap_bob_services_title_1'];
+$services_content_1 = $options['bootstrap_bob_services_content_1'];
+
+$services_icon_2 = $options['bootstrap_bob_services_icon_2'];
+$services_title_2 = $options['bootstrap_bob_services_title_2'];
+$services_content_2 = $options['bootstrap_bob_services_content_2'];
+
+$services_icon_3 = $options['bootstrap_bob_services_icon_3'];
+$services_title_3 = $options['bootstrap_bob_services_title_3'];
+$services_content_3 = $options['bootstrap_bob_services_content_3'];
 ?>
 
 <!-- Services Section -->
@@ -18,26 +26,26 @@ $services_content1 = $options['bootstrap_bob_services_content'];
                 <div class="col-md-4">
                     <span class="fa-stack fa-4x">
                         <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                        <i class="<?php echo $services_icon1; ?> fa-stack-1x fa-inverse"></i>
+                        <i class="<?php echo $services_icon_1; ?> fa-stack-1x fa-inverse"></i>
                     </span>
-                    <h4 class="service-heading"><?php echo $services_title1; ?></h4>
-                    <p class="text-muted"><?php echo $services_content1; ?></p>
+                    <h4 class="service-heading"><?php echo $services_title_1; ?></h4>
+                    <p class="text-muted"><?php echo $services_content_1; ?></p>
                 </div>
                 <div class="col-md-4">
                     <span class="fa-stack fa-4x">
                         <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                        <i class="fa fa-laptop fa-stack-1x fa-inverse"></i>
+                        <i class="<?php echo $services_icon_2; ?> fa-stack-1x fa-inverse"></i>
                     </span>
-                    <h4 class="service-heading">Responsive Design</h4>
-                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+                    <h4 class="service-heading"><?php echo $services_title_2; ?></h4>
+                    <p class="text-muted"><?php echo $services_content_2; ?></p>
                 </div>
                 <div class="col-md-4">
                     <span class="fa-stack fa-4x">
                         <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                        <i class="fa fa-lock fa-stack-1x fa-inverse"></i>
+                        <i class="<?php echo $services_icon_3; ?> fa-stack-1x fa-inverse"></i>
                     </span>
-                    <h4 class="service-heading">Web Security</h4>
-                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+                    <h4 class="service-heading"><?php echo $services_title_3; ?></h4>
+                    <p class="text-muted"><?php echo $services_content_3; ?></p>
                 </div>
             </div>
         </div>
