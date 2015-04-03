@@ -18,13 +18,17 @@ jQuery(document).ready(function($){
                 firstName = name.split(' ').slice(0, -1).join(' ');
             }
             $.ajax({
-                url: "././mail/contact_me.php",
+                url: contact_ajax.ajaxurl,
                 type: "POST",
+                dataType: 'json',
                 data: {
+                    action: 'bootstrap_bob_contact_ajax',
                     name: name,
                     phone: phone,
                     email: email,
-                    message: message
+                    message: message,
+                    submission: $('#xyq').val(),
+                    security: contact_ajax.security
                 },
                 cache: false,
                 success: function() {
