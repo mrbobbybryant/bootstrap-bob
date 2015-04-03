@@ -304,6 +304,21 @@ function save_extra_social_links( $user_id ) {
 add_action( 'personal_options_update', 'save_extra_social_links' );
 add_action( 'edit_user_profile_update', 'save_extra_social_links' );
 
+/**
+ * Remove gravitar from users list.
+ */
+
+function bootstrap_bob_remove_avatar_from_users_list( $avatar ) {
+    if (is_admin()) {
+        global $current_screen; 
+        if ( $current_screen->base == 'users' ) {
+            $avatar = '';
+        }
+    }
+    return $avatar;
+}
+add_filter( 'get_avatar', 'bootstrap_bob_remove_avatar_from_users_list' );
+
 function add_menuclass($ulclass) {
 return preg_replace('/<a rel="page-scroll"/', '<a rel="nofollow" class="page-scroll"', $ulclass, 1);
 }
