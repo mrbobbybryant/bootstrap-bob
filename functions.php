@@ -54,6 +54,7 @@ function bootstrap_bob_setup() {
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus( array(
 		'primary' => __( 'Primary Menu', 'bootstrap_bob' ),
+		'footer' => __( 'Footer Menu', 'bootstrap_bob' )
 	) );
 
 	/*
@@ -88,11 +89,11 @@ add_action( 'after_setup_theme', 'bootstrap_bob_setup' );
  */
 function bootstrap_bob_widgets_init() {
 	register_sidebar( array(
-		'name'          => __( 'Sidebar', 'bootstrap_bob' ),
-		'id'            => 'sidebar-1',
+		'name'          => __( 'Footer Menu', 'bootstrap_bob' ),
+		'id'            => 'footer-1',
 		'description'   => '',
-		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</aside>',
+		'before_widget' => '<ul id="%1$s" class="list-inline quicklinks">',
+		'after_widget'  => '</ul>',
 		'before_title'  => '<h1 class="widget-title">',
 		'after_title'   => '</h1>',
 	) );
@@ -184,7 +185,7 @@ require get_template_directory() . '/inc/cpt-about.php';
 require get_template_directory() . '/inc/cpt-portfolio.php';
 
 /**
- * Load Portfolio Custom Post Type.
+ * Load Client Custom Post Type.
  */
 require get_template_directory() . '/inc/cpt-clients.php';
 
@@ -199,7 +200,7 @@ function bootstrap_bob_portfolio(){
 }
 
 /**
- * Create custom portfolio query.
+ * Create custom client query.
  */
 function bootstrap_bob_clients(){
 	$args = array( 'post_type' => 'client' );
