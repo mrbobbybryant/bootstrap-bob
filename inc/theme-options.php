@@ -141,7 +141,7 @@ function bootstrap_bob_text_field_0_render(  ) {
 
 	$options = get_option( 'bootstrap_bob_settings' );
 	?>
-	<input type='text' size="50" name='bootstrap_bob_settings[bootstrap_bob_text_field_0]' value='<?php if( !empty( $options[ 'bootstrap_bob_text_field_0' ] ) ) echo $options['bootstrap_bob_text_field_0']; ?>'>
+	<input type='text' size="50" name='bootstrap_bob_settings[bootstrap_bob_text_field_0]' value='<?php if( !empty( $options[ 'bootstrap_bob_text_field_0' ] ) ) echo esc_attr( $options[ 'bootstrap_bob_text_field_0' ] ); ?>'>
 	<?php
 
 }
@@ -150,7 +150,7 @@ function bootstrap_bob_text_field_1_render(  ) {
 
 	$options = get_option( 'bootstrap_bob_settings' );
 	?>
-	<input type='text' name='bootstrap_bob_settings[bootstrap_bob_text_field_1]' value='<?php if( !empty( $options[ 'bootstrap_bob_text_field_1' ] ) ) echo $options['bootstrap_bob_text_field_1']; ?>'>
+	<input type='text' name='bootstrap_bob_settings[bootstrap_bob_text_field_1]' value='<?php if( !empty( $options[ 'bootstrap_bob_text_field_1' ] ) ) echo esc_attr( $options[ 'bootstrap_bob_text_field_1' ] ); ?>'>
 	<?php
 
 }
@@ -159,7 +159,7 @@ function bootstrap_bob_text_field_2_render(  ) {
 
 	$options = get_option( 'bootstrap_bob_settings' );
 	?>
-	<input type='text' name='bootstrap_bob_settings[bootstrap_bob_text_field_2]' value='<?php if( !empty( $options[ 'bootstrap_bob_text_field_2' ] ) ) echo $options['bootstrap_bob_text_field_2']; ?>'>
+	<input type='text' name='bootstrap_bob_settings[bootstrap_bob_text_field_2]' value='<?php if( !empty( $options[ 'bootstrap_bob_text_field_2' ] ) ) echo esc_attr( $options[ 'bootstrap_bob_text_field_2' ] ); ?>'>
 	<?php
 
 }
@@ -168,7 +168,7 @@ function bootstrap_bob_upload_field_1_render() {
 
 	$options = get_option( 'bootstrap_bob_settings' );
 	?>
-	<input id="upload_image" type="text" size="36" name="bootstrap_bob_settings[bootstrap_bob_upload_field_1]" value="<?php if( !empty( $options[ 'bootstrap_bob_upload_field_1' ] ) ) echo $options['bootstrap_bob_upload_field_1']; ?>" />
+	<input id="upload_image" type="text" size="36" name="bootstrap_bob_settings[bootstrap_bob_upload_field_1]" value="<?php if( !empty( $options[ 'bootstrap_bob_upload_field_1' ] ) ) echo esc_attr( $options[ 'bootstrap_bob_upload_field_1' ] ); ?>" />
     <input id="upload_image_button" class="button" type="button" value="Upload Image" />
 	<?php
 }
@@ -180,7 +180,7 @@ function bootstrap_bob_services_icon_1_render(  ) {
 
 	$options = get_option( 'bootstrap_bob_settings' );
 	?>
-	<input type='text' name='bootstrap_bob_settings[bootstrap_bob_services_icon_1]' value='<?php if( !empty( $options[ 'bootstrap_bob_services_icon_1' ] ) ) echo $options['bootstrap_bob_services_icon_1']; ?>'>
+	<input type='text' name='bootstrap_bob_settings[bootstrap_bob_services_icon_1]' value='<?php if( !empty( $options[ 'bootstrap_bob_services_icon_1' ] ) ) echo esc_attr( $options[ 'bootstrap_bob_services_icon_1' ] ); ?>'>
 	<?php
 
 }
@@ -189,7 +189,7 @@ function bootstrap_bob_services_title_1_render(  ) {
 
 	$options = get_option( 'bootstrap_bob_settings' );
 	?>
-	<input type='text' name='bootstrap_bob_settings[bootstrap_bob_services_title_1]' value='<?php if( !empty( $options[ 'bootstrap_bob_services_title_1' ] ) ) echo $options[ 'bootstrap_bob_services_title_1' ]; ?>'>
+	<input type='text' name='bootstrap_bob_settings[bootstrap_bob_services_title_1]' value='<?php if( !empty( $options[ 'bootstrap_bob_services_title_1' ] ) ) echo esc_attr( $options[ 'bootstrap_bob_services_title_1' ] ); ?>'>
 	<?php
 
 }
@@ -198,7 +198,7 @@ function bootstrap_bob__services_content_1_render(  ) {
 
 	$options = get_option( 'bootstrap_bob_settings' );
 	?>
-	<textarea cols="60" rows="10" name='bootstrap_bob_settings[bootstrap_bob_services_content_1]'><?php if( !empty( $options[ 'bootstrap_bob_services_content_1' ] ) ) echo $options['bootstrap_bob_services_content_1']; ?></textarea>
+	<textarea cols="60" rows="10" name='bootstrap_bob_settings[bootstrap_bob_services_content_1]'><?php if( !empty( $options[ 'bootstrap_bob_services_content_1' ] ) ) echo esc_html( $options[ 'bootstrap_bob_services_content_1' ] ); ?></textarea>
 	<?php
 
 }
@@ -209,7 +209,7 @@ function bootstrap_bob_services_icon_2_render(  ) {
 
 	$options = get_option( 'bootstrap_bob_settings' );
 	?>
-	<input type='text' name='bootstrap_bob_settings[bootstrap_bob_services_icon_2]' value='<?php if( !empty( $options[ 'bootstrap_bob_services_icon_2' ] ) ) echo $options['bootstrap_bob_services_icon_2']; ?>'>
+	<input type='text' name='bootstrap_bob_settings[bootstrap_bob_services_icon_2]' value='<?php if( !empty( $options[ 'bootstrap_bob_services_icon_2' ] ) ) echo esc_attr( $options[ 'bootstrap_bob_services_icon_2' ] ); ?>'>
 	<?php
 
 }
@@ -218,7 +218,7 @@ function bootstrap_bob_services_title_2_render(  ) {
 
 	$options = get_option( 'bootstrap_bob_settings' );
 	?>
-	<input type='text' name='bootstrap_bob_settings[bootstrap_bob_services_title_2]' value='<?php if( !empty( $options[ 'bootstrap_bob_services_title_2' ] ) ) echo $options[ 'bootstrap_bob_services_title_2' ]; ?>'>
+	<input type='text' name='bootstrap_bob_settings[bootstrap_bob_services_title_2]' value='<?php if( !empty( $options[ 'bootstrap_bob_services_title_2' ] ) ) echo esc_attr( $options[ 'bootstrap_bob_services_title_2' ] ); ?>'>
 	<?php
 
 }
@@ -227,7 +227,7 @@ function bootstrap_bob__services_content_2_render(  ) {
 
 	$options = get_option( 'bootstrap_bob_settings' );
 	?>
-	<textarea cols="60" rows="10" name='bootstrap_bob_settings[bootstrap_bob_services_content_2]'><?php if( !empty( $options[ 'bootstrap_bob_services_content_2' ] ) ) echo $options['bootstrap_bob_services_content_2']; ?></textarea>
+	<textarea cols="60" rows="10" name='bootstrap_bob_settings[bootstrap_bob_services_content_2]'><?php if( !empty( $options[ 'bootstrap_bob_services_content_2' ] ) ) echo esc_html( $options[ 'bootstrap_bob_services_content_2' ] ); ?></textarea>
 	<?php
 
 }
@@ -238,7 +238,7 @@ function bootstrap_bob_services_icon_3_render(  ) {
 
 	$options = get_option( 'bootstrap_bob_settings' );
 	?>
-	<input type='text' name='bootstrap_bob_settings[bootstrap_bob_services_icon_3]' value='<?php if( !empty( $options[ 'bootstrap_bob_services_icon_3' ] ) ) echo $options['bootstrap_bob_services_icon_3']; ?>'>
+	<input type='text' name='bootstrap_bob_settings[bootstrap_bob_services_icon_3]' value='<?php if( !empty( $options[ 'bootstrap_bob_services_icon_3' ] ) ) echo esc_attr( $options[ 'bootstrap_bob_services_icon_3' ] ); ?>'>
 	<?php
 
 }
@@ -247,7 +247,7 @@ function bootstrap_bob_services_title_3_render(  ) {
 
 	$options = get_option( 'bootstrap_bob_settings' );
 	?>
-	<input type='text' name='bootstrap_bob_settings[bootstrap_bob_services_title_3]' value='<?php if( !empty( $options[ 'bootstrap_bob_services_title_3' ] ) ) echo $options[ 'bootstrap_bob_services_title_3' ]; ?>'>
+	<input type='text' name='bootstrap_bob_settings[bootstrap_bob_services_title_3]' value='<?php if( !empty( $options[ 'bootstrap_bob_services_title_3' ] ) ) echo esc_attr( $options[ 'bootstrap_bob_services_title_3' ] ); ?>'>
 	<?php
 
 }
@@ -256,7 +256,7 @@ function bootstrap_bob__services_content_3_render(  ) {
 
 	$options = get_option( 'bootstrap_bob_settings' );
 	?>
-	<textarea cols="60" rows="10" name='bootstrap_bob_settings[bootstrap_bob_services_content_3]'><?php if( !empty( $options[ 'bootstrap_bob_services_content_3' ] ) ) echo $options['bootstrap_bob_services_content_3']; ?></textarea>
+	<textarea cols="60" rows="10" name='bootstrap_bob_settings[bootstrap_bob_services_content_3]'><?php if( !empty( $options[ 'bootstrap_bob_services_content_3' ] ) ) echo esc_html( $options[ 'bootstrap_bob_services_content_3' ] ); ?></textarea>
 	<?php
 
 }
@@ -366,7 +366,7 @@ function bootstrap_bob_facebook_render(  ) {
 
 	$options = get_option( 'bootstrap_bob_social' );
 	?>
-	<input type='text' size="50" name='bootstrap_bob_social[bootstrap_bob_facebook]' value='<?php if( !empty( $options[ 'bootstrap_bob_facebook' ] ) ) echo $options[ 'bootstrap_bob_facebook' ]; ?>'>
+	<input type='text' size="50" name='bootstrap_bob_social[bootstrap_bob_facebook]' value='<?php if( !empty( $options[ 'bootstrap_bob_facebook' ] ) ) echo esc_attr( $options[ 'bootstrap_bob_facebook' ] ); ?>'>
 	<?php
 
 }
@@ -374,7 +374,7 @@ function bootstrap_bob_twitter_render(  ) {
 
 	$options = get_option( 'bootstrap_bob_social' );
 	?>
-	<input type='text' size="50" name='bootstrap_bob_social[bootstrap_bob_twitter]' value='<?php if( !empty( $options[ 'bootstrap_bob_twitter' ] ) ) echo $options[ 'bootstrap_bob_twitter' ]; ?>'>
+	<input type='text' size="50" name='bootstrap_bob_social[bootstrap_bob_twitter]' value='<?php if( !empty( $options[ 'bootstrap_bob_twitter' ] ) ) echo esc_attr( $options[ 'bootstrap_bob_twitter' ] ); ?>'>
 	<?php
 
 }
@@ -382,7 +382,7 @@ function bootstrap_bob_linkedin_render(  ) {
 
 	$options = get_option( 'bootstrap_bob_social' );
 	?>
-	<input type='text' size="50" name='bootstrap_bob_social[bootstrap_bob_linkedin]' value='<?php if( !empty( $options[ 'bootstrap_bob_linkedin' ] ) ) echo $options[ 'bootstrap_bob_linkedin' ]; ?>'>
+	<input type='text' size="50" name='bootstrap_bob_social[bootstrap_bob_linkedin]' value='<?php if( !empty( $options[ 'bootstrap_bob_linkedin' ] ) ) echo esc_attr( $options[ 'bootstrap_bob_linkedin' ] ); ?>'>
 	<?php
 
 }
@@ -390,7 +390,7 @@ function bootstrap_bob_google_render(  ) {
 
 	$options = get_option( 'bootstrap_bob_social' );
 	?>
-	<input type='text' size="50" name='bootstrap_bob_social[bootstrap_bob_google]' value='<?php if( !empty( $options[ 'bootstrap_bob_google' ] ) ) echo $options[ 'bootstrap_bob_google' ]; ?>'>
+	<input type='text' size="50" name='bootstrap_bob_social[bootstrap_bob_google]' value='<?php if( !empty( $options[ 'bootstrap_bob_google' ] ) ) echo esc_attr( $options[ 'bootstrap_bob_google' ] ); ?>'>
 	<?php
 
 }
@@ -398,7 +398,7 @@ function bootstrap_bob_youtube_render(  ) {
 
 	$options = get_option( 'bootstrap_bob_social' );
 	?>
-	<input type='text' size="50" name='bootstrap_bob_social[bootstrap_bob_youtube]' value='<?php if( !empty( $options[ 'bootstrap_bob_youtube' ] ) ) echo $options[ 'bootstrap_bob_youtube' ]; ?>'>
+	<input type='text' size="50" name='bootstrap_bob_social[bootstrap_bob_youtube]' value='<?php if( !empty( $options[ 'bootstrap_bob_youtube' ] ) ) echo esc_attr( $options[ 'bootstrap_bob_youtube' ] ); ?>'>
 	<?php
 
 }
