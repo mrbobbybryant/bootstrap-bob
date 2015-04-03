@@ -291,6 +291,9 @@ return preg_replace('/<a rel="page-scroll"/', '<a rel="nofollow" class="page-scr
 }
 add_filter('wp_nav_menu','add_menuclass');
 
+/**
+ * Validate and email contact form submissions.
+ */
 function bootstrap_bob_contact_ajax() {
 	//Verify Form has content.
 	if ( ! empty( $_POST['submission'] ) ) {
@@ -318,3 +321,46 @@ function bootstrap_bob_contact_ajax() {
 }
 add_action( 'wp_ajax_bootstrap_bob_contact_ajax', 'bootstrap_bob_contact_ajax' );
 add_action( 'wp_ajax_nopriv_bootstrap_bob_contact_ajax', 'bootstrap_bob_contact_ajax' );
+
+/**
+ * Render Social Media Links.
+ */
+function wla_dental_social_icons() {
+  $options = get_option('bootstrap_bob_social');
+  // Get the URLs
+  if ( !empty( 'bootstrap_bob_social' ) ) {
+    $facebook_url = $options['bootstrap_bob_facebook'];
+    $twitter_url = $options['bootstrap_bob_twitter'];
+    $google_plus_url = $options['bootstrap_bob_google'];
+    $youtube_url = $options['bootstrap_bob_youtube'];
+    $linkedin_url = $options['bootstrap_bob_linkedin'];
+  }
+  $rss2_url = get_bloginfo_rss('rss2_url');
+
+  $output = '';
+
+  $output .= '<ul class="list-inline social-buttons">';
+
+  if ( !empty( $facebook_url ) ) {
+    $output .= '<li><a href="' . esc_url( $facebook_url ) . '"><span class="screen-reader-text"><i class="fa fa-facebook"></i></span></a></li>';
+  }
+  if ( !empty( $twitter_url ) ) {
+    $output .= '<li><a href="' . esc_url( $twitter_url ) . '"><span class="screen-reader-text"><i class="fa fa-twitter"></span></i></a></li>';
+  }
+  if ( !empty( $google_plus_url ) ) {
+    $output .= '<li><a href="' . esc_url( $google_plus_url ) . '"><span class="screen-reader-text"><i class="fa fa-google-plus"></i></span></a></li>';
+  }
+  if ( !empty( $youtube_url ) ) {
+    $output .= '<li><a href="' . esc_url( $youtube_url ) . '"><span class="screen-reader-text"><i class="fa fa-youtube"></i></span></a></li>';
+  }
+  if ( !empty( $linkedin_url ) ) {
+    $output .= '<li><a href="' . esc_url( $linkedin_url ) . '"><span class="screen-reader-text"><i class="fa fa-linkedin"></i></span></a></li>';
+  }
+  if ( $rss2_url ) {
+    $output .= '<li><a href="' . esc_url( $rss2_url ) . '"><span class="screen-reader-text"><i class="fa fa-rss"></i></span></a></li>';
+  }
+
+  $output .= '</ul>';
+
+  echo $output;
+}
