@@ -1,5 +1,6 @@
 <?php
 
+$post_counter = 0;
 $portfolio = bootstrap_bob_portfolio(); ?>
 <?php if ( $portfolio->have_posts() ) : ?>
 
@@ -14,10 +15,10 @@ $portfolio = bootstrap_bob_portfolio(); ?>
             
             <div class="row">
             	<?php while ( $portfolio->have_posts() ) : $portfolio->the_post(); ?>
-            	<?php $portfolio_url = get_post_meta( get_the_ID(), 'portfolio-url', true ); ?>
+                <?php $post_counter++; // increment the counter for each post ?>
                 <?php $portfolio_image = get_the_post_thumbnail( get_the_ID(), 'portfolio', array( 'class' => 'img-responsive' )); ?>
                 <div class="col-md-4 col-sm-6 portfolio-item">
-                    <a href="<?php echo esc_url( $portfolio_url ); ?>" class="portfolio-link" data-toggle="modal">
+                    <a href="#portfolioModal<?php echo $post_counter; ?>" class="portfolio-link" data-toggle="modal">
                         <div class="portfolio-hover">
                             <div class="portfolio-hover-content">
                                 <i class="fa fa-plus fa-3x"></i>
