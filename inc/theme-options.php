@@ -275,7 +275,6 @@ function bootstrap_bob_theme_options() {
 		settings_fields( 'theme_options' );
 		do_settings_sections( 'theme_options' );
 		do_settings_sections( 'services_options' );
-		settings_fields( 'social_options' );
 		do_settings_sections( 'social_options' );
 		submit_button();
 		?>
@@ -315,7 +314,7 @@ add_action( 'wp_head', 'bootstrap_bob_hook_css' );
 
 function bootstrap_bob_social_settings_init(  ) { 
 
-	register_setting( 'social_options', 'bootstrap_bob_social' );
+	register_setting( 'theme_options', 'bootstrap_bob_social' );
 
 	add_settings_section(
 		'bootstrap_bob_social_section', 
