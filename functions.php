@@ -120,7 +120,16 @@ function bootstrap_bob_scripts() {
 	wp_enqueue_style ( 'bootstrap-core', get_template_directory_uri() . '/css/bootstrap.css', '3.3.4' );
 	wp_enqueue_script( 'bootstrap-js', get_template_directory_uri() . '/js/bootstrap.js', array( 'jquery' ), '3.3.4', true );
 
-	wp_localize_script( 'contact_me', 'contact_ajax', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ), 'security' => wp_create_nonce( 'bootstrap_bob_nonce' ) ) );
+	wp_localize_script( 'contact_me', 
+		'contact_ajax', 
+		array( 
+			'ajaxurl' => admin_url( 'admin-ajax.php' ), 
+			'security' => wp_create_nonce( 'bootstrap_bob_nonce' ),
+			'success' => __( 'Your message has been sent.' ),
+			'sorry' => __( 'Sorry ' ),
+			'error' => __( ', it seems that my mail server is not responding. Please try again later!' )
+		) 
+	);
 
 	// Enqueue icons and fonts
 	wp_enqueue_style ( 'font-awesome', 'http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css', array(), '4.3.0' );
