@@ -119,6 +119,8 @@ function bootstrap_bob_scripts() {
 	wp_enqueue_style ( 'bootstrap-core', get_template_directory_uri() . '/css/bootstrap.css', '3.3.4' );
 	wp_enqueue_script( 'bootstrap-js', get_template_directory_uri() . '/js/bootstrap.js', array( 'jquery' ), '3.3.4', true );
 
+	wp_localize_script( 'contact_me', 'contact_ajax', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ), 'security' => wp_create_nonce( 'bootstrap_bob_nonce' ) ) );
+
 	// Enqueue icons and fonts
 	wp_enqueue_style ( 'font-awesome', 'http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css', array(), '4.3.0' );
 	wp_enqueue_style ( 'font-montserrat', 'http://fonts.googleapis.com/css?family=Montserrat:400,700', array(), '20150331' );
@@ -289,5 +291,30 @@ return preg_replace('/<a rel="page-scroll"/', '<a rel="nofollow" class="page-scr
 }
 add_filter('wp_nav_menu','add_menuclass');
 
+function bootstrap_bob_contact_ajax() {
+	//Verify Form has content.
+	if ( ! empty( $_POST['submission'] ) ) {
+      return;
+    }
+    // Verify correct nonce
+    check_ajax_referer( 'bootstrap_bob_nonce', 'security' );
 
+    //user posted variables
+	$name = $_POST['name'];
+	$phone = $_POST['phone'];
+	$email = $_POST['email'];
+	$message = $_POST['message'];
+ 
+	//php mailer variables
+	$to = get_option('admin_email');
+	$subject = "Someone sent a message from ".get_bloginfo('name');
+	$headers = 'From: '. $email . "\r\n" .
+	  'Reply-To: ' . $email . "\r\n";
 
+    $sent = wp_mail($to, $subject, strip_tags($message), $headers);
+	if($sent) wp_send_json_success();
+	else wp_send_json_error(); //message wasn't sent
+
+}
+add_action( 'wp_ajax_bootstrap_bob_contact_ajax', 'bootstrap_bob_contact_ajax' );
+add_action( 'wp_ajax_nopriv_bootstrap_bob_contact_ajax', 'bootstrap_bob_contact_ajax' );
