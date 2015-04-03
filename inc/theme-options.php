@@ -141,7 +141,7 @@ function bootstrap_bob_text_field_0_render(  ) {
 
 	$options = get_option( 'bootstrap_bob_settings' );
 	?>
-	<input type='text' name='bootstrap_bob_settings[bootstrap_bob_text_field_0]' value='<?php if( !empty( $options[ 'bootstrap_bob_text_field_0' ] ) ) echo $options['bootstrap_bob_text_field_0']; ?>'>
+	<input type='text' size="50" name='bootstrap_bob_settings[bootstrap_bob_text_field_0]' value='<?php if( !empty( $options[ 'bootstrap_bob_text_field_0' ] ) ) echo $options['bootstrap_bob_text_field_0']; ?>'>
 	<?php
 
 }
@@ -275,6 +275,8 @@ function bootstrap_bob_theme_options() {
 		settings_fields( 'theme_options' );
 		do_settings_sections( 'theme_options' );
 		do_settings_sections( 'services_options' );
+		settings_fields( 'social_options' );
+		do_settings_sections( 'social_options' );
 		submit_button();
 		?>
 		
@@ -310,3 +312,99 @@ function bootstrap_bob_hook_css() {
 }
 add_action( 'wp_head', 'bootstrap_bob_hook_css' );
 
+
+function bootstrap_bob_social_settings_init(  ) { 
+
+	register_setting( 'social_options', 'bootstrap_bob_social' );
+
+	add_settings_section(
+		'bootstrap_bob_social_section', 
+		__( 'Social Media Options', 'bootstrap_bob' ), 
+		'bootstrap_bob_social_section_callback', 
+		'social_options'
+	);
+
+	add_settings_field( 
+		'bootstrap_bob_facebook', 
+		__( 'Facebook Url', 'bootstrap_bob' ), 
+		'bootstrap_bob_facebook_render', 
+		'social_options', 
+		'bootstrap_bob_social_section' 
+	);
+
+	add_settings_field( 
+		'bootstrap_bob_twitter', 
+		__( 'Twiiter Url', 'bootstrap_bob' ), 
+		'bootstrap_bob_twitter_render', 
+		'social_options', 
+		'bootstrap_bob_social_section' 
+	);
+
+	add_settings_field( 
+		'bootstrap_bob_linkedin', 
+		__( 'LinkedIn Url', 'bootstrap_bob' ), 
+		'bootstrap_bob_linkedin_render', 
+		'social_options', 
+		'bootstrap_bob_social_section' 
+	);
+
+	add_settings_field( 
+		'bootstrap_bob_google', 
+		__( 'Google Plus Url', 'bootstrap_bob' ), 
+		'bootstrap_bob_google_render', 
+		'social_options', 
+		'bootstrap_bob_social_section' 
+	);
+	add_settings_field( 
+		'bootstrap_bob_youtube', 
+		__( 'YouTube Url', 'bootstrap_bob' ), 
+		'bootstrap_bob_youtube_render', 
+		'social_options', 
+		'bootstrap_bob_social_section' 
+	);
+}
+function bootstrap_bob_facebook_render(  ) { 
+
+	$options = get_option( 'bootstrap_bob_social' );
+	?>
+	<input type='text' name='bootstrap_bob_social[bootstrap_bob_facebook]' value='<?php if( !empty( $options[ 'bootstrap_bob_facebook' ] ) ) echo $options[ 'bootstrap_bob_facebook' ]; ?>'>
+	<?php
+
+}
+function bootstrap_bob_twitter_render(  ) { 
+
+	$options = get_option( 'bootstrap_bob_social' );
+	?>
+	<input type='text' name='bootstrap_bob_social[bootstrap_bob_twitter]' value='<?php if( !empty( $options[ 'bootstrap_bob_twitter' ] ) ) echo $options[ 'bootstrap_bob_twitter' ]; ?>'>
+	<?php
+
+}
+function bootstrap_bob_linkedin_render(  ) { 
+
+	$options = get_option( 'bootstrap_bob_social' );
+	?>
+	<input type='text' name='bootstrap_bob_social[bootstrap_bob_linkedin]' value='<?php if( !empty( $options[ 'bootstrap_bob_linkedin' ] ) ) echo $options[ 'bootstrap_bob_linkedin' ]; ?>'>
+	<?php
+
+}
+function bootstrap_bob_google_render(  ) { 
+
+	$options = get_option( 'bootstrap_bob_social' );
+	?>
+	<input type='text' name='bootstrap_bob_social[bootstrap_bob_google]' value='<?php if( !empty( $options[ 'bootstrap_bob_google' ] ) ) echo $options[ 'bootstrap_bob_google' ]; ?>'>
+	<?php
+
+}
+function bootstrap_bob_youtube_render(  ) { 
+
+	$options = get_option( 'bootstrap_bob_social' );
+	?>
+	<input type='text' name='bootstrap_bob_social[bootstrap_bob_youtube]' value='<?php if( !empty( $options[ 'bootstrap_bob_youtube' ] ) ) echo $options[ 'bootstrap_bob_youtube' ]; ?>'>
+	<?php
+
+}
+add_action( 'admin_init', 'bootstrap_bob_social_settings_init' );
+
+function bootstrap_bob_social_section_callback() {
+	echo __( 'This section controls which social Icons appear in the footer.', 'bootstrap_bob' );
+}
