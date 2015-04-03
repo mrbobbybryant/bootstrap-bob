@@ -27,6 +27,7 @@ get_template_part( 'content', 'clients' );
             <div class="row">
                 <div class="col-lg-12">
                     <form name="sentMessage" id="contactForm" novalidate>
+                        <?php wp_nonce_field(basename( __FILE__ ),'bootstrap_bob_nonce'); ?>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
@@ -50,6 +51,7 @@ get_template_part( 'content', 'clients' );
                             </div>
                             <div class="clearfix"></div>
                             <div class="col-lg-12 text-center">
+                                <input id="xyq" type="hidden" name="<?php echo apply_filters( 'honeypot_name', 'date-submitted'); ?>" class="date-submitted" value="" />
                                 <div id="success"></div>
                                 <button type="submit" class="btn btn-xl">Send Message</button>
                             </div>
