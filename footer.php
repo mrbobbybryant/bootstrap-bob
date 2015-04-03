@@ -7,14 +7,29 @@
  * @package Bootstrap Bob
  */
 ?>
-
 	<footer id="colophon" class="site-footer" role="contentinfo">
-		<div class="site-info">
-			<a href="<?php echo esc_url( __( 'http://wordpress.org/', 'bootstrap_bob' ) ); ?>"><?php printf( __( 'Proudly powered by %s', 'bootstrap_bob' ), 'WordPress' ); ?></a>
-			<span class="sep"> | </span>
-			<?php printf( __( 'Theme: %1$s by %2$s.', 'bootstrap_bob' ), 'Bootstrap Bob', '<a href="http://developwithwp.com" rel="designer">Bobby Bryant</a>' ); ?>
-		</div><!-- .site-info -->
-	</footer><!-- #colophon -->
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <span class="copyright">
+                    	Copyright &copy; <a href="?php bloginfo('url'); ?>"><?php bloginfo('name'); ?></a>
+						<?php echo date("Y"); ?>.
+					</span>
+                </div>
+                <div class="col-md-4">
+                    <?php wla_dental_social_icons(); ?>
+                </div>
+                <div class="col-md-4">
+                    <ul class="list-inline quicklinks">
+                        <li><a href="#">Privacy Policy</a>
+                        </li>
+                        <li><a href="#">Terms of Use</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
 </div><!-- #page -->
 
 <?php wp_footer(); ?>
