@@ -51,6 +51,7 @@ function bootstrap_bob_post_type() {
 	        ),
 	        'supports'            => array( 
 	        	'title',
+	        	'editor',
 	        	'thumbnail'
 	        )
 	);
@@ -82,10 +83,10 @@ function bootstrap_bob_meta_callback($post) {
     <div>
       <div class="meta-row">
           <div class="meta-th">
-            <label for="portfolio-url" class="hrm-row-title"><?php _e( 'Portfolio URL', 'bootstrap_bob' )?></label>
+            <label for="portfolio-subtitle" class="hrm-row-title"><?php _e( 'Portfolio Subtitle', 'bootstrap_bob' )?></label>
           </div>
           <div class="meta-td">
-            <input type="text" name="portfolio-url" id="portfolio-url" value="<?php if ( !empty ( $portfolio_stored_meta['portfolio-url'] ) ) echo esc_url( $portfolio_stored_meta['portfolio-url'][0] ); ?>" />
+            <input type="text" size="50" name="portfolio-subtitle" id="portfolio-subtitle" value="<?php if ( !empty ( $portfolio_stored_meta['portfolio-subtitle'] ) ) echo esc_attr( $portfolio_stored_meta['portfolio-subtitle'][0] ); ?>" />
           </div>
       </div>
     </div>
@@ -105,8 +106,8 @@ function bootstrap_bob_meta_save( $post_id ) {
         return;
     }
     // Checks for input and sanitizes/saves if needed
-    if( isset( $_POST[ 'portfolio-url' ] ) ) {
-        update_post_meta( $post_id, 'portfolio-url', sanitize_text_field( $_POST[ 'portfolio-url' ] ) );
+    if( isset( $_POST[ 'portfolio-subtitle' ] ) ) {
+        update_post_meta( $post_id, 'portfolio-subtitle', sanitize_text_field( $_POST[ 'portfolio-subtitle' ] ) );
     }
 }
 add_action( 'save_post', 'bootstrap_bob_meta_save' );
