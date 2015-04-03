@@ -29,7 +29,7 @@ if ( $modal->have_posts() ) :
                             <p class="item-intro text-muted"><?php echo esc_html( $portfolio_subtitle ); ?></p>
                             <?php echo $portfolio_image; ?>
                             <p><?php the_content(); ?></p>
-                            <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> Close Project</button>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> <?php echo __( 'Close Project' ); ?></button>
                         </div>
                     </div>
                 </div>

@@ -4,8 +4,8 @@
  */
 function bootstrap_bob_client_post_type() {
 	
-	$singular = 'Client';
-	$plural = 'Clients';
+	$singular = __( 'Client' );
+	$plural = __( 'Clients' );
 
 	$labels = array(
 		'name' 			=> $plural,

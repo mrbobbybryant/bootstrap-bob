@@ -59,7 +59,7 @@ function bootstrap_bob_settings_init(  ) {
 	add_settings_section(
 		'bootstrap_bob_services_section', 
 		__( 'Services Section Options', 'bootstrap_bob' ), 
-		'bootstrap_bob_settings_section_callback', 
+		'bootstrap_bob_services_section_callback', 
 		'services_options'
 	);
 
@@ -169,7 +169,7 @@ function bootstrap_bob_upload_field_1_render() {
 	$options = get_option( 'bootstrap_bob_settings' );
 	?>
 	<input id="upload_image" type="text" size="36" name="bootstrap_bob_settings[bootstrap_bob_upload_field_1]" value="<?php if( !empty( $options[ 'bootstrap_bob_upload_field_1' ] ) ) echo esc_attr( $options[ 'bootstrap_bob_upload_field_1' ] ); ?>" />
-    <input id="upload_image_button" class="button" type="button" value="Upload Image" />
+    <input id="upload_image_button" class="button" type="button" value="<?php echo __( 'Upload Image' ); ?>" />
 	<?php
 }
 
@@ -181,7 +181,7 @@ function bootstrap_bob_services_icon_1_render(  ) {
 	$options = get_option( 'bootstrap_bob_settings' );
 	?>
 	<input type='text' placeholder="fa-shopping-cart" name='bootstrap_bob_settings[bootstrap_bob_services_icon_1]' value='<?php if( !empty( $options[ 'bootstrap_bob_services_icon_1' ] ) ) echo esc_attr( $options[ 'bootstrap_bob_services_icon_1' ] ); ?>'>
-	<a href="http://fortawesome.github.io/Font-Awesome/icons/" target="_blank"><label>Find Icons to use here!</label></a>
+	<a href="http://fortawesome.github.io/Font-Awesome/icons/" target="_blank"><label><?php echo __( 'Find Icons to use here!' ); ?></label></a>
 	<?php
 
 }
@@ -211,7 +211,7 @@ function bootstrap_bob_services_icon_2_render(  ) {
 	$options = get_option( 'bootstrap_bob_settings' );
 	?>
 	<input type='text' placeholder="fa fa-laptop" name='bootstrap_bob_settings[bootstrap_bob_services_icon_2]' value='<?php if( !empty( $options[ 'bootstrap_bob_services_icon_2' ] ) ) echo esc_attr( $options[ 'bootstrap_bob_services_icon_2' ] ); ?>'>
-	<a href="http://fortawesome.github.io/Font-Awesome/icons/" target="_blank"><label>Find Icons to use here!</label></a>
+	<a href="http://fortawesome.github.io/Font-Awesome/icons/" target="_blank"><label><?php echo __( 'Find Icons to use here!' ); ?></label></a>
 	<?php
 
 }
@@ -241,7 +241,7 @@ function bootstrap_bob_services_icon_3_render(  ) {
 	$options = get_option( 'bootstrap_bob_settings' );
 	?>
 	<input type='text' placeholder="fa fa-lock" name='bootstrap_bob_settings[bootstrap_bob_services_icon_3]' value='<?php if( !empty( $options[ 'bootstrap_bob_services_icon_3' ] ) ) echo esc_attr( $options[ 'bootstrap_bob_services_icon_3' ] ); ?>'>
-	<a href="http://fortawesome.github.io/Font-Awesome/icons/" target="_blank"><label>Find Icons to use here!</label></a>
+	<a href="http://fortawesome.github.io/Font-Awesome/icons/" target="_blank"><label><?php echo __( 'Find Icons to use here!' ); ?></label></a>
 	<?php
 
 }
@@ -272,7 +272,7 @@ function bootstrap_bob_theme_options() {
 	?>
 	<form action='options.php' method='post'>
 		
-		<h2>Bootstrap Bob</h2>
+		<h2><?php echo __( 'Bootstrap Bob' ); ?></h2>
 		
 		<?php
 		settings_fields( 'theme_options' );
@@ -294,7 +294,7 @@ function bootstrap_bob_settings_section_callback(  ) {
 // Services Section Callback
 function bootstrap_bob_services_section_callback(  ) { 
 
-	echo __( 'This the content in the Services Section.', 'bootstrap_bob' );
+	echo __( 'This section controls the content in the Services Section. Specifically it allows you to choose the <strong>Title, Icon, and Content.</strong>', 'bootstrap_bob' );
 
 }
 
@@ -408,5 +408,5 @@ function bootstrap_bob_youtube_render(  ) {
 add_action( 'admin_init', 'bootstrap_bob_social_settings_init' );
 
 function bootstrap_bob_social_section_callback() {
-	echo __( 'This section controls which social Icons appear in the footer.', 'bootstrap_bob' );
+	echo __( 'This section controls which social Icons appear in the footer. <strong>Please be sure to include the full URL.</strong>', 'bootstrap_bob' );
 }

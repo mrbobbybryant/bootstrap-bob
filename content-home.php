@@ -9,9 +9,9 @@ $cta_button = $options['bootstrap_bob_text_field_2'];
     <header>
         <div class="container">
             <div class="intro-text">
-                <div class="intro-lead-in"><?php echo $lead_in; ?></div>
-                <div class="intro-heading"><?php echo $intro_heading; ?></div>
-                <a href="#services" class="page-scroll btn btn-xl"><?php echo $cta_button; ?></a>
+                <div class="intro-lead-in"><?php echo esc_html( $lead_in ); ?></div>
+                <div class="intro-heading"><?php echo esc_html( $intro_heading ); ?></div>
+                <a href="#services" class="page-scroll btn btn-xl"><?php echo esc_html( $cta_button ); ?></a>
             </div>
         </div>
     </header>

@@ -4,8 +4,8 @@
  */
 function bootstrap_bob_about_post_type() {
 	
-	$singular = 'About';
-	$plural = 'About';
+	$singular = __( 'About' );
+	$plural = __( 'About' );
 
 	$labels = array(
 		'name' 			=> $plural,
@@ -80,7 +80,7 @@ function bootstrap_bob_about_callback($post) {
     <div>
       <div class="meta-row">
           <div class="meta-th">
-            <label for="event-date" class="hrm-row-title"><?php _e( 'Event Date', 'bootstrap_bob' )?></label>
+            <label for="event-date" class="hrm-row-title"><?php __( 'Event Date', 'bootstrap_bob' )?></label>
           </div>
           <div class="meta-td">
             <input type="text" name="event-date" id="event-date" value="<?php if ( !empty ( $about_stored_meta['event-date'] ) ) echo esc_attr( $about_stored_meta['event-date'][0] ); ?>" />

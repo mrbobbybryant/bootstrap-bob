@@ -228,25 +228,25 @@ function bootstrap_bob_about(){
  */
 function add_extra_social_links( $user ) {
     ?>
-        <h3>New User Profile Links</h3>
+        <h3><?php echo __( 'New User Profile Links' ); ?></h3>
 
         <table class="form-table">
             <tr>
-                <th><label for="facebook_profile">Facebook Profile</label></th>
+                <th><label for="facebook_profile"><?php echo __( 'Facebook Profile' ); ?></label></th>
                 <td><input type="text" name="facebook_profile" value="<?php if ( !empty( get_the_author_meta( 'facebook_profile', $user->ID ) ) ) echo esc_attr(get_the_author_meta( 'facebook_profile', $user->ID )); ?>" class="regular-text" /></td>
             </tr>
 
             <tr>
-                <th><label for="twitter_profile">Twitter Profile</label></th>
+                <th><label for="twitter_profile"><?php echo __( 'Twitter Profile' ); ?></label></th>
                 <td><input type="text" name="twitter_profile" value="<?php if ( !empty( get_the_author_meta( 'twitter_profile', $user->ID ) ) ) echo esc_attr(get_the_author_meta( 'twitter_profile', $user->ID )); ?>" class="regular-text" /></td>
             </tr>
 
             <tr>
-                <th><label for="google_profile">Google+ Profile</label></th>
+                <th><label for="google_profile"><?php echo __( 'Google+ Profile' ); ?></label></th>
                 <td><input type="text" name="google_profile" value="<?php if ( !empty( get_the_author_meta( 'google_profile', $user->ID ) ) ) echo esc_attr(get_the_author_meta( 'google_profile', $user->ID )); ?>" class="regular-text" /></td>
             </tr>
             <tr>
-                <th><label for="linkedin_profile">LinkedIn Profile</label></th>
+                <th><label for="linkedin_profile"><?php echo __( 'LinkedIn Profile' ); ?>LinkedIn Profile</label></th>
                 <td><input type="text" name="linkedin_profile" value="<?php if ( !empty( get_the_author_meta( 'linkedin_profile', $user->ID ) ) ) echo esc_attr(get_the_author_meta( 'linkedin_profile', $user->ID )); ?>" class="regular-text" /></td>
             </tr>
         </table>
@@ -254,16 +254,16 @@ function add_extra_social_links( $user ) {
 
         <table>
             <tr>
-                <th><label for="upload_image">Enter a URL or upload an image.</label></th>
+                <th><label for="upload_image"><?php echo __( 'Enter a URL or upload an image.' ); ?></label></th>
                 <td><input id="upload_image" type="text" size="36" name="upload_image" value="<?php if ( !empty( get_the_author_meta( 'upload_image', $user->ID ) ) ) echo esc_attr(get_the_author_meta( 'upload_image', $user->ID )); ?>" /></td>
-                <td><input id="upload_image_button" class="button" type="button" value="Upload Image" /></td>
+                <td><input id="upload_image_button" class="button" type="button" value="<?php echo __( 'Upload Image' ); ?>" /></td>
             </tr>
         </table>
-        <h3>Job Title</h3>
+        <h3><?php echo __( 'Job Title' ); ?></h3>
 
         <table class="form-table">
             <tr>
-                <th><label for="user_title">Job Title</label></th>
+                <th><label for="user_title"><?php echo __( 'Job Title' ); ?></label></th>
                 <td><input type="text" name="user_title" value="<?php if ( !empty( get_the_author_meta( 'user_title', $user->ID ) ) ) echo esc_attr(get_the_author_meta( 'user_title', $user->ID )); ?>" class="regular-text" /></td>
             </tr>
         </table>    
@@ -336,7 +336,6 @@ function wla_dental_social_icons() {
     $youtube_url = $options['bootstrap_bob_youtube'];
     $linkedin_url = $options['bootstrap_bob_linkedin'];
   }
-  $rss2_url = get_bloginfo_rss('rss2_url');
 
   $output = '';
 
@@ -357,9 +356,7 @@ function wla_dental_social_icons() {
   if ( !empty( $linkedin_url ) ) {
     $output .= '<li><a href="' . esc_url( $linkedin_url ) . '"><span class="screen-reader-text"><i class="fa fa-linkedin"></i></span></a></li>';
   }
-  if ( $rss2_url ) {
-    $output .= '<li><a href="' . esc_url( $rss2_url ) . '"><span class="screen-reader-text"><i class="fa fa-rss"></i></span></a></li>';
-  }
+  
 
   $output .= '</ul>';
 

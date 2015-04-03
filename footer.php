@@ -12,7 +12,7 @@
             <div class="row">
                 <div class="col-md-4">
                     <span class="copyright">
-                    	Copyright &copy; <a href="?php bloginfo('url'); ?>"><?php bloginfo('name'); ?></a>
+                    	<?php echo __( 'Copyright ' ); ?>&copy; <a href="?php bloginfo('url'); ?>"><?php bloginfo('name'); ?></a>
 						<?php echo date("Y"); ?>.
 					</span>
                 </div>

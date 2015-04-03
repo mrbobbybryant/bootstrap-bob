@@ -9,7 +9,7 @@ $postcount = 1; ?>
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">About</h2>
+                    <h2 class="section-heading"><?php echo __( 'About' ); ?></h2>
                     <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
                 </div>
             </div>
@@ -22,11 +22,11 @@ $postcount = 1; ?>
                             <?php $event_image = wp_get_attachment_thumb_url( get_post_thumbnail_id( $post->ID ) ); ?>
                             <li class=" <?php if (is_int($postcount/2)) { echo 'timeline-inverted'; } ?>" >
                                 <div class="timeline-image">
-                                    <img class="img-circle img-responsive" src="<?php echo $event_image; ?>" alt="">
+                                    <img class="img-circle img-responsive" src="<?php echo esc_url( $event_image ); ?>" alt="">
                                 </div>
                                 <div class="timeline-panel">
                                     <div class="timeline-heading">
-                                        <h4><?php echo $event_date; ?></h4>
+                                        <h4><?php echo esc_html( $event_date ); ?></h4>
                                         <h4 class="subheading"><?php the_title(); ?></h4>
                                     </div>
                                     <div class="timeline-body">
@@ -38,9 +38,9 @@ $postcount = 1; ?>
                             endwhile; ?>
                             <li class="timeline-inverted">
                             <div class="timeline-image">
-                                <h4>Be Part
-                                    <br>Of Our
-                                    <br>Story!</h4>
+                                <h4><?php echo __( 'Be Part' ); ?>
+                                    <br><?php echo __( 'Of Our' ); ?>
+                                    <br><?php echo __( 'Story!' ); ?></h4>
                             </div>
                         </li>
                         </ul>

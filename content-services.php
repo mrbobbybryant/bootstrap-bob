@@ -19,7 +19,7 @@ $services_content_3 = $options['bootstrap_bob_services_content_3'];
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">Services</h2>
+                    <h2 class="section-heading"><?php echo __( 'Services' ); ?></h2>
                     <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
                 </div>
             </div>
@@ -27,26 +27,26 @@ $services_content_3 = $options['bootstrap_bob_services_content_3'];
                 <div class="col-md-4">
                     <span class="fa-stack fa-4x">
                         <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                        <i class="<?php echo $services_icon_1; ?> fa-stack-1x fa-inverse"></i>
+                        <i class="<?php echo esc_attr( $services_icon_1 ); ?> fa-stack-1x fa-inverse"></i>
                     </span>
-                    <h4 class="service-heading"><?php echo $services_title_1; ?></h4>
-                    <p class="text-muted"><?php echo $services_content_1; ?></p>
+                    <h4 class="service-heading"><?php echo esc_html( $services_title_1 ); ?></h4>
+                    <p class="text-muted"><?php echo esc_html( $services_content_1 ); ?></p>
                 </div>
                 <div class="col-md-4">
                     <span class="fa-stack fa-4x">
                         <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                        <i class="<?php echo $services_icon_2; ?> fa-stack-1x fa-inverse"></i>
+                        <i class="<?php echo esc_attr( $services_icon_2 ); ?> fa-stack-1x fa-inverse"></i>
                     </span>
-                    <h4 class="service-heading"><?php echo $services_title_2; ?></h4>
-                    <p class="text-muted"><?php echo $services_content_2; ?></p>
+                    <h4 class="service-heading"><?php echo esc_html( $services_title_2 ); ?></h4>
+                    <p class="text-muted"><?php echo esc_html( $services_content_2 ); ?></p>
                 </div>
                 <div class="col-md-4">
                     <span class="fa-stack fa-4x">
                         <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                        <i class="<?php echo $services_icon_3; ?> fa-stack-1x fa-inverse"></i>
+                        <i class="<?php echo esc_attr( $services_icon_3 ); ?> fa-stack-1x fa-inverse"></i>
                     </span>
-                    <h4 class="service-heading"><?php echo $services_title_3; ?></h4>
-                    <p class="text-muted"><?php echo $services_content_3; ?></p>
+                    <h4 class="service-heading"><?php echo esc_html( $services_title_3 ); ?></h4>
+                    <p class="text-muted"><?php echo esc_html( $services_content_3 ); ?></p>
                 </div>
             </div>
         </div>

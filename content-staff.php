@@ -5,7 +5,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">Our Amazing Team</h2>
+                    <h2 class="section-heading"><?php echo __( 'Our Amazing Team' ); ?></h2>
                     <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
                 </div>
             </div>
@@ -33,26 +33,26 @@ $users = $user_query->get_results();
         <div class="row">
             <div class="col-sm-4">
                 <div class="team-member">
-                    <img src="<?php echo $user_profile; ?>" class="img-responsive img-circle" alt="">
+                    <img src="<?php echo esc_url( $user_profile ); ?>" class="img-responsive img-circle" alt="">
                     <h4><?php the_author_meta( 'display_name', $staff->ID ); ?></h4>
                     <p class="text-muted"><?php echo $user_title; ?></p>
                     <ul class="list-inline social-buttons">
                         <?php 
 
                         if ( !empty ($twitter) ) {
-                            echo '<li><a href="'. $twitter . '"><i class="fa fa-twitter"></i></a>
+                            echo '<li><a href="'. esc_url( $twitter ) . '"><i class="fa fa-twitter"></i></a>
                         </li>';
                         }
                         if ( !empty ($facebook) ) {
-                            echo '<li><a href="'. $facebook . '"><i class="fa fa-facebook"></i></a>
+                            echo '<li><a href="'. esc_url( $facebook ) . '"><i class="fa fa-facebook"></i></a>
                         </li>';
                         }
                         if ( !empty ($linkedin) ) {
-                            echo '<li><a href="'. $linkedin . '"><i class="fa fa-linkedin"></i></a>
+                            echo '<li><a href="'. esc_url( $linkedin ) . '"><i class="fa fa-linkedin"></i></a>
                         </li>';
                         }
                         if ( !empty ($google) ) {
-                            echo '<li><a href="'. $google . '"><i class="fa fa-google-plus"></i></a>
+                            echo '<li><a href="'. esc_url( $google ) . '"><i class="fa fa-google-plus"></i></a>
                         </li>';
                         }
 
