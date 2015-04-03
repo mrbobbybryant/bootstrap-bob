@@ -250,7 +250,7 @@ function add_extra_social_links( $user ) {
                 <td><input type="text" name="linkedin_profile" value="<?php if ( !empty( get_the_author_meta( 'linkedin_profile', $user->ID ) ) ) echo esc_attr(get_the_author_meta( 'linkedin_profile', $user->ID )); ?>" class="regular-text" /></td>
             </tr>
         </table>
-        <h3>User Profile Picture</h3>
+        <h3><?php echo __( 'User Profile Picture' ); ?></h3>
 
         <table>
             <tr>
@@ -277,12 +277,29 @@ add_action( 'edit_user_profile', 'add_extra_social_links' );
  */
 
 function save_extra_social_links( $user_id ) {
-    update_user_meta( $user_id,'facebook_profile', sanitize_text_field( $_POST['facebook_profile'] ) );
-    update_user_meta( $user_id,'twitter_profile', sanitize_text_field( $_POST['twitter_profile'] ) );
-    update_user_meta( $user_id,'google_profile', sanitize_text_field( $_POST['google_profile'] ) );
-    update_user_meta( $user_id,'linkedin_profile', sanitize_text_field( $_POST['linkedin_profile'] ) );
-    update_user_meta( $user_id,'upload_image', sanitize_text_field( $_POST['upload_image'] ) );
-    update_user_meta( $user_id,'user_title', sanitize_text_field( $_POST['user_title'] ) );
+    
+	if ( !current_user_can( 'edit_user', $user_id ) )
+		return FALSE;
+
+	if( isset( $_POST[ 'facebook_profile' ] ) ) {
+        update_user_meta( $user_id,'facebook_profile', sanitize_text_field( $_POST['facebook_profile'] ) );
+    }
+    if( isset( $_POST[ 'twitter_profile' ] ) ) {
+        update_user_meta( $user_id,'twitter_profile', sanitize_text_field( $_POST['twitter_profile'] ) );
+    }
+    if( isset( $_POST[ 'google_profile' ] ) ) {
+        update_user_meta( $user_id,'google_profile', sanitize_text_field( $_POST['google_profile'] ) );
+    }
+    if( isset( $_POST[ 'linkedin_profile' ] ) ) {
+        update_user_meta( $user_id,'linkedin_profile', sanitize_text_field( $_POST['linkedin_profile'] ) );
+    }
+    if( isset( $_POST[ 'upload_image' ] ) ) {
+        update_user_meta( $user_id,'upload_image', sanitize_text_field( $_POST['upload_image'] ) );
+    }
+    if( isset( $_POST[ 'user_title' ] ) ) {
+        update_user_meta( $user_id,'user_title', sanitize_text_field( $_POST['user_title'] ) );
+    }
+    
 }
 add_action( 'personal_options_update', 'save_extra_social_links' );
 add_action( 'edit_user_profile_update', 'save_extra_social_links' );
