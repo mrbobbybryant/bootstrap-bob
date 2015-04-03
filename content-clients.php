@@ -1,6 +1,6 @@
 <?php
 
-	$clients= bootstrap_bob_clients();
+	$clients = bootstrap_bob_clients();
 	if ( $clients->have_posts() ) : ?>
 
 	<!-- Clients Aside -->
