@@ -367,7 +367,7 @@ function bootstrap_bob_facebook_render(  ) {
 
 	$options = get_option( 'bootstrap_bob_social' );
 	?>
-	<input type='text' name='bootstrap_bob_social[bootstrap_bob_facebook]' value='<?php if( !empty( $options[ 'bootstrap_bob_facebook' ] ) ) echo $options[ 'bootstrap_bob_facebook' ]; ?>'>
+	<input type='text' size="50" name='bootstrap_bob_social[bootstrap_bob_facebook]' value='<?php if( !empty( $options[ 'bootstrap_bob_facebook' ] ) ) echo $options[ 'bootstrap_bob_facebook' ]; ?>'>
 	<?php
 
 }
@@ -375,7 +375,7 @@ function bootstrap_bob_twitter_render(  ) {
 
 	$options = get_option( 'bootstrap_bob_social' );
 	?>
-	<input type='text' name='bootstrap_bob_social[bootstrap_bob_twitter]' value='<?php if( !empty( $options[ 'bootstrap_bob_twitter' ] ) ) echo $options[ 'bootstrap_bob_twitter' ]; ?>'>
+	<input type='text' size="50" name='bootstrap_bob_social[bootstrap_bob_twitter]' value='<?php if( !empty( $options[ 'bootstrap_bob_twitter' ] ) ) echo $options[ 'bootstrap_bob_twitter' ]; ?>'>
 	<?php
 
 }
@@ -383,7 +383,7 @@ function bootstrap_bob_linkedin_render(  ) {
 
 	$options = get_option( 'bootstrap_bob_social' );
 	?>
-	<input type='text' name='bootstrap_bob_social[bootstrap_bob_linkedin]' value='<?php if( !empty( $options[ 'bootstrap_bob_linkedin' ] ) ) echo $options[ 'bootstrap_bob_linkedin' ]; ?>'>
+	<input type='text' size="50" name='bootstrap_bob_social[bootstrap_bob_linkedin]' value='<?php if( !empty( $options[ 'bootstrap_bob_linkedin' ] ) ) echo $options[ 'bootstrap_bob_linkedin' ]; ?>'>
 	<?php
 
 }
@@ -391,7 +391,7 @@ function bootstrap_bob_google_render(  ) {
 
 	$options = get_option( 'bootstrap_bob_social' );
 	?>
-	<input type='text' name='bootstrap_bob_social[bootstrap_bob_google]' value='<?php if( !empty( $options[ 'bootstrap_bob_google' ] ) ) echo $options[ 'bootstrap_bob_google' ]; ?>'>
+	<input type='text' size="50" name='bootstrap_bob_social[bootstrap_bob_google]' value='<?php if( !empty( $options[ 'bootstrap_bob_google' ] ) ) echo $options[ 'bootstrap_bob_google' ]; ?>'>
 	<?php
 
 }
@@ -399,7 +399,7 @@ function bootstrap_bob_youtube_render(  ) {
 
 	$options = get_option( 'bootstrap_bob_social' );
 	?>
-	<input type='text' name='bootstrap_bob_social[bootstrap_bob_youtube]' value='<?php if( !empty( $options[ 'bootstrap_bob_youtube' ] ) ) echo $options[ 'bootstrap_bob_youtube' ]; ?>'>
+	<input type='text' size="50" name='bootstrap_bob_social[bootstrap_bob_youtube]' value='<?php if( !empty( $options[ 'bootstrap_bob_youtube' ] ) ) echo $options[ 'bootstrap_bob_youtube' ]; ?>'>
 	<?php
 
 }
