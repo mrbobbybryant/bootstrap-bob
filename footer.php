@@ -19,14 +19,12 @@
                 <div class="col-md-4">
                     <?php wla_dental_social_icons(); ?>
                 </div>
-                <div class="col-md-4">
-                    <ul class="list-inline quicklinks">
-                        <li><a href="#">Privacy Policy</a>
-                        </li>
-                        <li><a href="#">Terms of Use</a>
-                        </li>
-                    </ul>
-                </div>
+                <?php wp_nav_menu( array( 
+                'theme_location' => 'footer',
+                'container_class' => 'col-md-4',
+                'menu_class' => 'list-inline quicklinks'
+                ) ); 
+            ?>
             </div>
         </div>
     </footer>
