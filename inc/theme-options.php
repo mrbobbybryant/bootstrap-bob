@@ -180,7 +180,8 @@ function bootstrap_bob_services_icon_1_render(  ) {
 
 	$options = get_option( 'bootstrap_bob_settings' );
 	?>
-	<input type='text' name='bootstrap_bob_settings[bootstrap_bob_services_icon_1]' value='<?php if( !empty( $options[ 'bootstrap_bob_services_icon_1' ] ) ) echo esc_attr( $options[ 'bootstrap_bob_services_icon_1' ] ); ?>'>
+	<input type='text' placeholder="fa-shopping-cart" name='bootstrap_bob_settings[bootstrap_bob_services_icon_1]' value='<?php if( !empty( $options[ 'bootstrap_bob_services_icon_1' ] ) ) echo esc_attr( $options[ 'bootstrap_bob_services_icon_1' ] ); ?>'>
+	<a href="http://fortawesome.github.io/Font-Awesome/icons/" target="_blank"><label>Find Icons to use here!</label></a>
 	<?php
 
 }
@@ -209,7 +210,8 @@ function bootstrap_bob_services_icon_2_render(  ) {
 
 	$options = get_option( 'bootstrap_bob_settings' );
 	?>
-	<input type='text' name='bootstrap_bob_settings[bootstrap_bob_services_icon_2]' value='<?php if( !empty( $options[ 'bootstrap_bob_services_icon_2' ] ) ) echo esc_attr( $options[ 'bootstrap_bob_services_icon_2' ] ); ?>'>
+	<input type='text' placeholder="fa fa-laptop" name='bootstrap_bob_settings[bootstrap_bob_services_icon_2]' value='<?php if( !empty( $options[ 'bootstrap_bob_services_icon_2' ] ) ) echo esc_attr( $options[ 'bootstrap_bob_services_icon_2' ] ); ?>'>
+	<a href="http://fortawesome.github.io/Font-Awesome/icons/" target="_blank"><label>Find Icons to use here!</label></a>
 	<?php
 
 }
@@ -238,7 +240,8 @@ function bootstrap_bob_services_icon_3_render(  ) {
 
 	$options = get_option( 'bootstrap_bob_settings' );
 	?>
-	<input type='text' name='bootstrap_bob_settings[bootstrap_bob_services_icon_3]' value='<?php if( !empty( $options[ 'bootstrap_bob_services_icon_3' ] ) ) echo esc_attr( $options[ 'bootstrap_bob_services_icon_3' ] ); ?>'>
+	<input type='text' placeholder="fa fa-lock" name='bootstrap_bob_settings[bootstrap_bob_services_icon_3]' value='<?php if( !empty( $options[ 'bootstrap_bob_services_icon_3' ] ) ) echo esc_attr( $options[ 'bootstrap_bob_services_icon_3' ] ); ?>'>
+	<a href="http://fortawesome.github.io/Font-Awesome/icons/" target="_blank"><label>Find Icons to use here!</label></a>
 	<?php
 
 }
@@ -366,7 +369,7 @@ function bootstrap_bob_facebook_render(  ) {
 
 	$options = get_option( 'bootstrap_bob_social' );
 	?>
-	<input type='text' size="50" name='bootstrap_bob_social[bootstrap_bob_facebook]' value='<?php if( !empty( $options[ 'bootstrap_bob_facebook' ] ) ) echo esc_attr( $options[ 'bootstrap_bob_facebook' ] ); ?>'>
+	<input type='text' placeholder="https://www.facebook.com/{unique-slug}" size="50" name='bootstrap_bob_social[bootstrap_bob_facebook]' value='<?php if( !empty( $options[ 'bootstrap_bob_facebook' ] ) ) echo esc_attr( $options[ 'bootstrap_bob_facebook' ] ); ?>'>
 	<?php
 
 }
