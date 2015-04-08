@@ -4,8 +4,8 @@
  */
 function bootstrap_bob_post_type() {
 	
-	$singular = 'Portfolio';
-	$plural = 'Portfolio';
+	$singular = __( 'Portfolio' );
+	$plural = __( 'Portfolio' );
 
 	$labels = array(
 		'name' 			=> $plural,
@@ -83,7 +83,7 @@ function bootstrap_bob_meta_callback($post) {
     <div>
       <div class="meta-row">
           <div class="meta-th">
-            <label for="portfolio-subtitle" class="hrm-row-title"><?php _e( 'Portfolio Subtitle', 'bootstrap_bob' )?></label>
+            <label for="portfolio-subtitle" class="hrm-row-title"><?php __( 'Portfolio Subtitle', 'bootstrap_bob' )?></label>
           </div>
           <div class="meta-td">
             <input type="text" size="50" name="portfolio-subtitle" id="portfolio-subtitle" value="<?php if ( !empty ( $portfolio_stored_meta['portfolio-subtitle'] ) ) echo esc_attr( $portfolio_stored_meta['portfolio-subtitle'][0] ); ?>" />
