@@ -33,4 +33,14 @@
 			}
 		} );
 	} );
+	wp.customize('font_range_field_1', function(value){
+		value.bind(function(to){
+			$('div.intro-lead-in').css('font-size', to);
+		});
+	});
+	wp.customize('hero_title_one_textbox', function( value ) {
+		value.bind(function(to) {
+			$('.intro-lead-in').text(to);
+		});
+	});
 } )( jQuery );
