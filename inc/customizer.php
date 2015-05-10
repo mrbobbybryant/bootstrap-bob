@@ -11,9 +11,10 @@
  * @param WP_Customize_Manager $wp_customize Theme Customizer object.
  */
 function bootstrap_bob_customize_remove( $wp_customize ) {
-	$wp_customize->remove_section( 'title_tagline' );
+	$wp_customize->remove_control( 'blogdescription' );
 	$wp_customize->remove_section( 'colors' );
 	$wp_customize->remove_section( 'background_image' );
+	$wp_customize->get_setting('blogname')->transport='postMessage';
 }
 add_action( 'customize_register', 'bootstrap_bob_customize_remove' );
 
@@ -24,6 +25,150 @@ function bootstrap_bob_customize_preview_js( $wp_customize ) {
 	wp_enqueue_script( 'bootstrap_bob_customizer', get_template_directory_uri() . '/js/customizer.js', array( 'customize-preview' ), '20130508', true );
 }
 add_action( 'customize_preview_init', 'bootstrap_bob_customize_preview_js' );
+
+/**
+ * This function adds additional settings to the default sections.
+ */
+function bootstrap_bob_customizer_additions( $wp_customize ) {
+	// Site Title Font Size Controls
+	$wp_customize->add_setting( 
+		'site_title_font_range', 
+		array(
+			'default' => 18,
+			'type' => 'theme_mod',
+			'capability' => 'edit_theme_options',
+			'sanitize_callback' => 'intval',
+			'transport' => 'postMessage'
+		) 
+	);
+
+	$wp_customize->add_control( 
+		'site_title_font_range', 
+		array(
+		    'type' => 'range',
+		    'setting' => 'site_title_font_range',
+		    'section' => 'title_tagline',
+		    'label' => __( 'Site Title Font Size', 'bootstrap_bob' ),
+		    'input_attrs' => array(
+		        'min' => 0,
+		        'max' => 50,
+		        'step' => 1,
+	    	),
+		) 
+	);
+	//Site Title Color Setting
+	$wp_customize->add_setting(
+    	'site_title_color_setting', array(
+    		'default' => '#fed136',
+    		'transport' => 'postMessage',
+    		'capability' => 'edit_theme_options',
+    		'sanitize_callback' => 'sanitize_hex_color',
+
+    	)
+    );
+    $wp_customize->add_control(
+    	new WP_Customize_Color_Control(
+    		$wp_customize,
+    		'site_title_color_setting',
+    		array(
+    			'label' => __( 'Site Title Color', 'bootstrap_bob' ),
+    			'section' => 'title_tagline',
+    			'setting' => 'site_title_color_setting',
+    		)
+    	)
+    );
+    //Navigations Settings
+    // Nav Font Size Controls
+	$wp_customize->add_setting( 
+		'nav_font_range', 
+		array(
+			'default' => 18,
+			'type' => 'theme_mod',
+			'capability' => 'edit_theme_options',
+			'sanitize_callback' => 'intval',
+			'transport' => 'postMessage'
+		) 
+	);
+
+	$wp_customize->add_control( 
+		'nav_font_range', 
+		array(
+		    'type' => 'range',
+		    'setting' => 'nav_font_range',
+		    'section' => 'nav',
+		    'label' => __( 'Navigation Font Size', 'bootstrap_bob' ),
+		    'input_attrs' => array(
+		        'min' => 0,
+		        'max' => 50,
+		        'step' => 1,
+	    	),
+		) 
+	);
+	//Nav Font Color Setting
+	$wp_customize->add_setting(
+    	'nav_font_color_setting', array(
+    		'default' => '#fff',
+    		'transport' => 'postMessage',
+    		'capability' => 'edit_theme_options',
+    		'sanitize_callback' => 'sanitize_hex_color',
+
+    	)
+    );
+    $wp_customize->add_control(
+    	new WP_Customize_Color_Control(
+    		$wp_customize,
+    		'nav_font_color_setting',
+    		array(
+    			'label' => __( 'Navigation Font Color', 'bootstrap_bob' ),
+    			'section' => 'nav',
+    			'setting' => 'nav_font_color_setting',
+    		)
+    	)
+    );
+    //Nav Mobile Button Color Setting
+	$wp_customize->add_setting(
+    	'nav_menu_button_color', array(
+    		'default' => '#fed136',
+    		'transport' => 'postMessage',
+    		'capability' => 'edit_theme_options',
+    		'sanitize_callback' => 'sanitize_hex_color',
+
+    	)
+    );
+    $wp_customize->add_control(
+    	new WP_Customize_Color_Control(
+    		$wp_customize,
+    		'nav_menu_button_color',
+    		array(
+    			'label' => __( 'Mobile Nav Button Color', 'bootstrap_bob' ),
+    			'section' => 'nav',
+    			'setting' => 'nav_menu_button_color',
+    		)
+    	)
+    );
+    //Nav Mobile Button Icon Setting
+	$wp_customize->add_setting(
+    	'nav_menu_button_icon_color', array(
+    		'default' => '#fed136',
+    		'transport' => 'postMessage',
+    		'capability' => 'edit_theme_options',
+    		'sanitize_callback' => 'sanitize_hex_color',
+
+    	)
+    );
+    $wp_customize->add_control(
+    	new WP_Customize_Color_Control(
+    		$wp_customize,
+    		'nav_menu_button_icon_color',
+    		array(
+    			'label' => __( 'Mobile Nav Button Icon Color', 'bootstrap_bob' ),
+    			'section' => 'nav',
+    			'setting' => 'nav_menu_button_icon_color',
+    		)
+    	)
+    );
+}
+add_action( 'customize_register', 'bootstrap_bob_customizer_additions' );
 
 function bootstrap_bob_customizer_panels( $wp_customize ) {
 	$wp_customize->add_panel(
@@ -54,29 +199,18 @@ function _bootstrap_bob_hero_sections( $wp_customize ) {
         )
     );
 
-	_bootstrap_bob_homepage_hero_settings( $wp_customize );
-
-    $wp_customize->add_section(
-        'hero_section_two',
-        array(
-            'title' => __('Hero Section Colors', 'bootstrap_bob'),
-            'description' => __('This section controls the hero section colors.', 'bootstrap_bob'),
-            'priority' => 35,
-            'capability' => 'edit_theme_options',
-            'panel' => 'homepage_hero_section_panel'
-        )
-    );
-
-    _bootstrap_bob_homepage_hero_colors( $wp_customize );
+	_bootstrap_bob_homepage_hero_title_1( $wp_customize );
+	_bootstrap_bob_homepage_hero_title_2( $wp_customize );
+	_bootstrap_bob_homepage_hero_button( $wp_customize );
 }
-function _bootstrap_bob_homepage_hero_settings( $wp_customize ) {
+function _bootstrap_bob_homepage_hero_title_1( $wp_customize ) {
+	// Hero Image Uplaod
 	$wp_customize->add_setting( 
 		'hero_image_upload', 
 		array(
 			'capability' => 'edit_theme_options',
 		) 
 	);
- 
 	$wp_customize->add_control(
 	    new WP_Customize_Upload_Control(
 	        $wp_customize,
@@ -88,8 +222,10 @@ function _bootstrap_bob_homepage_hero_settings( $wp_customize ) {
 	        )
 	    )
 	);
+	//Welcome Title Settings
+	//Input Field
 	$wp_customize->add_setting(
-	    'hero_title_one_textbox',
+	    'welcome_title_textbox',
 	    array(
 	        'default' => __('Welcome To Our Studio!', 'bootstrap_bob'),
 	        'type' => 'theme_mod',
@@ -99,17 +235,17 @@ function _bootstrap_bob_homepage_hero_settings( $wp_customize ) {
 	    )
 	);
 	$wp_customize->add_control(
-	    'hero_title_one_textbox',
+	    'welcome_title_textbox',
 	    array(
 	        'label' => __('Welcome Title', 'bootstrap_bob'),
 	        'section' => 'hero_section_one',
 	        'type' => 'text',
-	        'setting' => 'hero_title_one_textbox',
+	        'setting' => 'welcome_title_textbox',
 	    )
 	);
-	// NEEDS WORK!!!!!!!!
+	// Welcome Title Font Size Controls
 	$wp_customize->add_setting( 
-		'font_range_field_1', 
+		'welcome_title_font_range', 
 		array(
 			'default' => 22,
 			'type' => 'theme_mod',
@@ -120,10 +256,10 @@ function _bootstrap_bob_homepage_hero_settings( $wp_customize ) {
 	);
 
 	$wp_customize->add_control( 
-		'font_range_field_1', 
+		'welcome_title_font_range', 
 		array(
 		    'type' => 'range',
-		    'setting' => 'font_range_field_1',
+		    'setting' => 'welcome_title_font_range',
 		    'section' => 'hero_section_one',
 		    'label' => __( 'Welcome Title Font Size', 'bootstrap_bob' ),
 		    'input_attrs' => array(
@@ -133,47 +269,9 @@ function _bootstrap_bob_homepage_hero_settings( $wp_customize ) {
 	    	),
 		) 
 	);
+	//Welcome Title Color Setting
 	$wp_customize->add_setting(
-	    'hero_title_two_textbox',
-	    array(
-	        'default' => __('IT IS NICE TO MEET YOU', 'bootstrap_bob'),
-	        'type' => 'theme_mod',
-	        'capability' => 'edit_theme_options',
-	        'sanitize_callback' => 'boobtstrap_bob_sanitize_text'
-	    )
-	);
-	$wp_customize->add_control(
-	    'hero_title_two_textbox',
-	    array(
-	        'label' => __('Greeting Title', 'bootstrap_bob'),
-	        'section' => 'hero_section_one',
-	        'type' => 'text',
-	        'setting' => 'hero_title_two_textbox',
-	    )
-	);
-	$wp_customize->add_setting(
-	    'hero_button_textbox',
-	    array(
-	        'default' => __('Tell Me More', 'bootstrap_bob'),
-	        'type' => 'theme_mod',
-	        'capability' => 'edit_theme_options',
-	        'sanitize_callback' => 'boobtstrap_bob_sanitize_text'
-	    )
-	);
-	$wp_customize->add_control(
-	    'hero_button_textbox',
-	    array(
-	        'label' => __('Hero Button Text', 'bootstrap_bob'),
-	        'section' => 'hero_section_one',
-	        'type' => 'text',
-	        'setting' => 'hero_button_textbox',
-	    )
-	);
-}
-
-function _bootstrap_bob_homepage_hero_colors( $wp_customize ) {
-	$wp_customize->add_setting(
-    	'hero_font_color_setting', array(
+    	'welcome_title_color_setting', array(
     		'default' => '#fff',
     		'transport' => 'postMessage',
     		'capability' => 'edit_theme_options',
@@ -184,18 +282,158 @@ function _bootstrap_bob_homepage_hero_colors( $wp_customize ) {
     $wp_customize->add_control(
     	new WP_Customize_Color_Control(
     		$wp_customize,
-    		'hero_font_color_setting',
+    		'welcome_title_color_setting',
     		array(
     			'label' => __( 'Hero Title Font Color', 'bootstrap_bob' ),
-    			'section' => 'hero_section_two',
-    			'setting' => 'hero_font_color_setting'
+    			'section' => 'hero_section_one',
+    			'setting' => 'welcome_title_color_setting',
     		)
     	)
     );
+}
+function _bootstrap_bob_homepage_hero_title_2( $wp_customize ) {
+	//Subtitle Input Field
+	$wp_customize->add_setting(
+	    'hero_subtitle_textbox',
+	    array(
+	        'default' => __('IT IS NICE TO MEET YOU', 'bootstrap_bob'),
+	        'type' => 'theme_mod',
+	        'capability' => 'edit_theme_options',
+	        'sanitize_callback' => 'boobtstrap_bob_sanitize_text',
+	        'transport' => 'postMessage',
+	    )
+	);
+	$wp_customize->add_control(
+	    'hero_subtitle_textbox',
+	    array(
+	        'label' => __('Subtitle', 'bootstrap_bob'),
+	        'section' => 'hero_section_one',
+	        'type' => 'text',
+	        'setting' => 'hero_subtitle_textbox',
+	    )
+	);
+	// Subtitle Font Size Controls
+	$wp_customize->add_setting( 
+		'hero_subtitle_font_range', 
+		array(
+			'default' => 50,
+			'type' => 'theme_mod',
+			'capability' => 'edit_theme_options',
+			'sanitize_callback' => 'intval',
+			'transport' => 'postMessage'
+		) 
+	);
+
+	$wp_customize->add_control( 
+		'hero_subtitle_font_range', 
+		array(
+		    'type' => 'range',
+		    'setting' => 'hero_subtitle_font_range',
+		    'section' => 'hero_section_one',
+		    'label' => __( 'Subtitle Font Size', 'bootstrap_bob' ),
+		    'input_attrs' => array(
+		        'min' => 0,
+		        'max' => 100,
+		        'step' => 1,
+	    	),
+		) 
+	);
+	//Subtitle Color Setting
+	$wp_customize->add_setting(
+    	'subtitle_color_setting', array(
+    		'default' => '#fff',
+    		'transport' => 'postMessage',
+    		'capability' => 'edit_theme_options',
+    		'sanitize_callback' => 'sanitize_hex_color',
+
+    	)
+    );
+    $wp_customize->add_control(
+    	new WP_Customize_Color_Control(
+    		$wp_customize,
+    		'subtitle_color_setting',
+    		array(
+    			'label' => __( 'Subtitle Font Color', 'bootstrap_bob' ),
+    			'section' => 'hero_section_one',
+    			'setting' => 'subtitle_color_setting',
+    		)
+    	)
+    );
+}
+
+function _bootstrap_bob_homepage_hero_button( $wp_customize ) {
+    //Hero Button Text Input Field
+	$wp_customize->add_setting(
+	    'hero_button_textbox',
+	    array(
+	        'default' => __('Tell Me More', 'bootstrap_bob'),
+	        'type' => 'theme_mod',
+	        'capability' => 'edit_theme_options',
+	        'sanitize_callback' => 'boobtstrap_bob_sanitize_text',
+	        'transport' => 'postMessage',
+	    )
+	);
+	$wp_customize->add_control(
+	    'hero_button_textbox',
+	    array(
+	        'label' => __('Button Text', 'bootstrap_bob'),
+	        'section' => 'hero_section_one',
+	        'type' => 'text',
+	        'setting' => 'hero_button_textbox',
+	    )
+	);
+	// Hero Button Font Size Controls
+	$wp_customize->add_setting( 
+		'hero_button_font_range', 
+		array(
+			'default' => 18,
+			'type' => 'theme_mod',
+			'capability' => 'edit_theme_options',
+			'sanitize_callback' => 'intval',
+			'transport' => 'postMessage'
+		) 
+	);
+
+	$wp_customize->add_control( 
+		'hero_button_font_range', 
+		array(
+		    'type' => 'range',
+		    'setting' => 'hero_button_font_range',
+		    'section' => 'hero_section_one',
+		    'label' => __( 'Hero Button Size', 'bootstrap_bob' ),
+		    'input_attrs' => array(
+		        'min' => 0,
+		        'max' => 40,
+		        'step' => 1,
+	    	),
+		) 
+	);
+	//Hero Button Font Color
+	$wp_customize->add_setting(
+    	'hero_button_font_color', array(
+    		'default' => '#fff',
+    		'transport' => 'postMessage',
+    		'capability' => 'edit_theme_options',
+    		'sanitize_callback' => 'sanitize_hex_color',
+
+    	)
+    );
+    $wp_customize->add_control(
+    	new WP_Customize_Color_Control(
+    		$wp_customize,
+    		'hero_button_font_color',
+    		array(
+    			'label' => __( 'Hero Button Font Color', 'bootstrap_bob' ),
+    			'section' => 'hero_section_one',
+    			'setting' => 'hero_button_font_color'
+    		)
+    	)
+    );
+    //Hero Button Color
     $wp_customize->add_setting(
     	'hero_button_color_setting', array(
     		'default' => '#fed136',
-    		// 'transport' => 'postMessage',
+    		'transport' => 'postMessage',
     		'capability' => 'edit_theme_options',
     		'sanitize_callback' => 'sanitize_hex_color',
 
@@ -207,15 +445,16 @@ function _bootstrap_bob_homepage_hero_colors( $wp_customize ) {
     		'hero_button_color_setting',
     		array(
     			'label' => __( 'Hero Button Color', 'bootstrap_bob' ),
-    			'section' => 'hero_section_two',
+    			'section' => 'hero_section_one',
     			'setting' => 'hero_button_color_setting'
     		)
     	)
     );
+    //Hero Button Border Color
     $wp_customize->add_setting(
     	'hero_button_border_color', array(
     		'default' => '#fed136',
-    		// 'transport' => 'postMessage',
+    		'transport' => 'postMessage',
     		'capability' => 'edit_theme_options',
     		'sanitize_callback' => 'sanitize_hex_color',
 
@@ -227,35 +466,13 @@ function _bootstrap_bob_homepage_hero_colors( $wp_customize ) {
     		'hero_button_border_color',
     		array(
     			'label' => __( 'Hero Button Border Color', 'bootstrap_bob' ),
-    			'section' => 'hero_section_two',
+    			'section' => 'hero_section_one',
     			'setting' => 'hero_button_border_color'
     		)
     	)
     );
 }
 
-/**
- * Applying the above color settings viz wp_head.
- */
-function bootstrap_bob_customizer_css()
-{
-    ?>
-         <style type="text/css">
-             .intro-lead-in { 
-             	/*color:<?php echo get_theme_mod('hero_font_color_setting', '#fff'); ?>;*/
-             	font-size:<?php echo get_theme_mod( 'font_range_field_1', 22 ); ?>px;
-             }
-             .intro-heading { 
-             	color:<?php echo get_theme_mod('hero_font_color_setting', '#fff'); ?>;
-             }
-             .btn-xl {
-             	background-color:<?php echo esc_attr( get_theme_mod( 'hero_button_color_setting', '#fed136' ) ); ?>;
-             	border-color:<?php echo esc_attr( get_theme_mod( 'hero_button_border_color', '#fed136' ) ); ?>;
-             }
-         </style>
-    <?php
-}
-add_action( 'wp_head', 'bootstrap_bob_customizer_css');
 
 function boobtstrap_bob_sanitize_text( $input ) {
 	return wp_kses_post( force_balance_tags( $input ) );
