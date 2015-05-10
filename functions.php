@@ -107,6 +107,7 @@ function bootstrap_bob_scripts() {
 	
 	wp_enqueue_script( 'bootstrap_bob-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20120206', true );
 	wp_enqueue_script( 'bootstrap_bob-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20130115', true );
+	wp_enqueue_script( 'customizer', get_template_directory_uri() . '/js/customizer.js', array(), '20150509', true );
 	
 	// Enqueue Navgation Js Files
 	wp_enqueue_script( 'classie-js', get_template_directory_uri() . '/js/classie.js', array(), '', true );
@@ -403,3 +404,23 @@ function wla_dental_social_icons() {
 
   echo $output;
 }
+
+//output background image styles
+function bootstrap_bob_hook_css() {
+
+	$output="<style> header { background-image: url(" . get_theme_mod( 'hero_image_upload' ) . "); 
+	background-position: center center;
+    background-repeat: none;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+    background-attachment: scroll; } </style>";
+    echo $output;
+}
+add_action( 'wp_head', 'bootstrap_bob_hook_css' );
+
+
+
+
+
