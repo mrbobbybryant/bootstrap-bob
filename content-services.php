@@ -1,16 +1,11 @@
 <?php
 $options = get_option( 'bootstrap_bob_settings' );
-$services_icon_1 = $options['bootstrap_bob_services_icon_1'];
-$services_title_1 = $options['bootstrap_bob_services_title_1'];
-$services_content_1 = $options['bootstrap_bob_services_content_1'];
-
-$services_icon_2 = $options['bootstrap_bob_services_icon_2'];
-$services_title_2 = $options['bootstrap_bob_services_title_2'];
-$services_content_2 = $options['bootstrap_bob_services_content_2'];
-
-$services_icon_3 = $options['bootstrap_bob_services_icon_3'];
-$services_title_3 = $options['bootstrap_bob_services_title_3'];
-$services_content_3 = $options['bootstrap_bob_services_content_3'];
+    $settings = array_values($options);
+    list( $lead_in, $intro_heading, $cta_button, $hero_image,
+          $services_icon_1, $services_title_1, $services_content_1,
+          $services_icon_2, $services_title_2, $services_content_2,
+          $services_icon_3, $services_title_3, $services_content_3
+    ) = $settings;
 
 ?>
 
