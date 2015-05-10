@@ -298,21 +298,7 @@ function bootstrap_bob_services_section_callback(  ) {
 
 }
 
-//output background image styles
-function bootstrap_bob_hook_css() {
-	$options = get_option( 'bootstrap_bob_settings' );
 
-	$output="<style> header { background-image: url(" . $options[ 'bootstrap_bob_upload_field_1' ] . "); 
-	background-position: center center;
-    background-repeat: none;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    background-size: cover;
-    -o-background-size: cover;
-    background-attachment: scroll; } </style>";
-    echo $output;
-}
-add_action( 'wp_head', 'bootstrap_bob_hook_css' );
 
 
 function bootstrap_bob_social_settings_init(  ) { 
