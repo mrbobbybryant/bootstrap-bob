@@ -35,7 +35,7 @@
 	} );
 	wp.customize('font_range_field_1', function(value){
 		value.bind(function(to){
-			$('.intro-lead-in').css('font-size', 'to');
+			$('.intro-lead-in').css('font-size', to + 'px');
 		});
 	});
 	wp.customize('hero_font_color_setting', function(value){
