@@ -4,9 +4,18 @@ get_header();
 
 get_template_part( 'content', 'home' );
 
-get_template_part( 'content', 'services' );
+if( get_theme_mod( 'display_services_section' ) == 1) {
 
-get_template_part( 'content', 'portfolio' ); 
+	get_template_part( 'content', 'services' );
+
+}
+
+if( get_theme_mod( 'display_portfolio_section' ) == 1) {
+
+	get_template_part( 'content', 'portfolio' );
+
+}
+ 
 
 get_template_part( 'content', 'about' );
 
