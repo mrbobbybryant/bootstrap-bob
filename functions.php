@@ -358,9 +358,9 @@ function bootstrap_bob_contact_ajax() {
 	  'Reply-To: ' . $email . "\r\n";
 
     $sent = wp_mail($to, $subject, strip_tags($message), $headers);
-	if($sent) wp_send_json_success();
-	else wp_send_json_error(); //message wasn't sent
-
+	if($sent) {
+		wp_send_json_success();
+	} else wp_send_json_error(); //message wasn't sent
 }
 add_action( 'wp_ajax_bootstrap_bob_contact_ajax', 'bootstrap_bob_contact_ajax' );
 add_action( 'wp_ajax_nopriv_bootstrap_bob_contact_ajax', 'bootstrap_bob_contact_ajax' );
