@@ -170,6 +170,9 @@ function bootstrap_bob_customizer_additions( $wp_customize ) {
 }
 add_action( 'customize_register', 'bootstrap_bob_customizer_additions' );
 
+/**
+ * This function adds a custom panel for the Homepage Hero Section.
+ */
 function bootstrap_bob_customizer_panels( $wp_customize ) {
 	$wp_customize->add_panel(
     	'homepage_hero_section_panel',
@@ -181,12 +184,39 @@ function bootstrap_bob_customizer_panels( $wp_customize ) {
     		'description' => __( 'These settings control the look and feel of the top section on the homepage.', 'bootstrap_bob' )
     	)
     );
+	_bootstrap_bob_hero_sections( $wp_customize );
 
-    _bootstrap_bob_hero_sections( $wp_customize );
+	$wp_customize->add_panel(
+    	'homepage_services_section_panel',
+    	array(
+    		'priority' =>11,
+    		'capability' => 'edit_theme_options',
+    		'theme_supports' => '',
+    		'title' => __( 'Homepage Sevices Section.', 'bootstrap_bob' ),
+    		'description' => __( 'These settings control the look and feel of the services section on the homepage.', 'bootstrap_bob' )
+    	)
+    );
+    _bootstrap_bob_services_sections( $wp_customize );
+
+    $wp_customize->add_panel(
+    	'homepage_portfolio_section_panel',
+    	array(
+    		'priority' =>11,
+    		'capability' => 'edit_theme_options',
+    		'theme_supports' => '',
+    		'title' => __( 'Homepage Portfolio Section.', 'bootstrap_bob' ),
+    		'description' => __( 'These settings control the look and feel of the portfolio section on the homepage.', 'bootstrap_bob' )
+    	)
+    );
+    _bootstrap_bob_portfolio_sections( $wp_customize );
 
 }
 add_action( 'customize_register', 'bootstrap_bob_customizer_panels' );
 
+/**
+ * This function adds a section the the Homepage Hero Panel. It also calls all the settings function,
+ * for this section.
+ */
 function _bootstrap_bob_hero_sections( $wp_customize ) {
 	$wp_customize->add_section(
         'hero_section_one',
@@ -203,6 +233,10 @@ function _bootstrap_bob_hero_sections( $wp_customize ) {
 	_bootstrap_bob_homepage_hero_title_2( $wp_customize );
 	_bootstrap_bob_homepage_hero_button( $wp_customize );
 }
+
+/**
+ * This function controls all the settings and contols for the hero section title.
+ */
 function _bootstrap_bob_homepage_hero_title_1( $wp_customize ) {
 	// Hero Image Uplaod
 	$wp_customize->add_setting( 
@@ -230,7 +264,7 @@ function _bootstrap_bob_homepage_hero_title_1( $wp_customize ) {
 	        'default' => __('Welcome To Our Studio!', 'bootstrap_bob'),
 	        'type' => 'theme_mod',
 	        'capability' => 'edit_theme_options',
-	        'sanitize_callback' => 'boobtstrap_bob_sanitize_text',
+	        'sanitize_callback' => 'bootstrap_bob_sanitize_text',
 	        'transport' => 'postMessage',
 	    )
 	);
@@ -291,6 +325,9 @@ function _bootstrap_bob_homepage_hero_title_1( $wp_customize ) {
     	)
     );
 }
+/**
+ * This function controls all the settings and contols for the hero section subtitle.
+ */
 function _bootstrap_bob_homepage_hero_title_2( $wp_customize ) {
 	//Subtitle Input Field
 	$wp_customize->add_setting(
@@ -299,7 +336,7 @@ function _bootstrap_bob_homepage_hero_title_2( $wp_customize ) {
 	        'default' => __('IT IS NICE TO MEET YOU', 'bootstrap_bob'),
 	        'type' => 'theme_mod',
 	        'capability' => 'edit_theme_options',
-	        'sanitize_callback' => 'boobtstrap_bob_sanitize_text',
+	        'sanitize_callback' => 'bootstrap_bob_sanitize_text',
 	        'transport' => 'postMessage',
 	    )
 	);
@@ -360,7 +397,9 @@ function _bootstrap_bob_homepage_hero_title_2( $wp_customize ) {
     	)
     );
 }
-
+/**
+ * This function controls all the settings and contols for the hero section button.
+ */
 function _bootstrap_bob_homepage_hero_button( $wp_customize ) {
     //Hero Button Text Input Field
 	$wp_customize->add_setting(
@@ -369,7 +408,7 @@ function _bootstrap_bob_homepage_hero_button( $wp_customize ) {
 	        'default' => __('Tell Me More', 'bootstrap_bob'),
 	        'type' => 'theme_mod',
 	        'capability' => 'edit_theme_options',
-	        'sanitize_callback' => 'boobtstrap_bob_sanitize_text',
+	        'sanitize_callback' => 'bootstrap_bob_sanitize_text',
 	        'transport' => 'postMessage',
 	    )
 	);
@@ -473,12 +512,29 @@ function _bootstrap_bob_homepage_hero_button( $wp_customize ) {
     );
 }
 
-
-function boobtstrap_bob_sanitize_text( $input ) {
+/**
+ * The next set of functions are responsible for custom sanitization callbacks.
+ */
+function bootstrap_bob_sanitize_text( $input ) {
 	return wp_kses_post( force_balance_tags( $input ) );
 }
 
+function bootstrap_bob_sanitize_checkbox( $input ) {
+    if ( $input == 1 ) {
+        return 1;
+    } else {
+        return '';
+    }
+}
 
+/**
+ * Load Services Section Customizer Settings.
+ */
+require get_template_directory() . '/inc/customizer/services-section.php';
 
+/**
+ * Load Portfolio Section Customizer Settings.
+ */
+require get_template_directory() . '/inc/customizer/portfolio-section.php';
 
 
