@@ -175,7 +175,7 @@ function _bootstrap_bob_homepage_hero_colors( $wp_customize ) {
 	$wp_customize->add_setting(
     	'hero_font_color_setting', array(
     		'default' => '#fff',
-    		// 'transport' => 'postMessage',
+    		'transport' => 'postMessage',
     		'capability' => 'edit_theme_options',
     		'sanitize_callback' => 'sanitize_hex_color',
 
@@ -242,7 +242,7 @@ function bootstrap_bob_customizer_css()
     ?>
          <style type="text/css">
              .intro-lead-in { 
-             	color:<?php echo get_theme_mod('hero_font_color_setting', '#fff'); ?>;
+             	/*color:<?php echo get_theme_mod('hero_font_color_setting', '#fff'); ?>;*/
              	font-size:<?php echo get_theme_mod( 'font_range_field_1', 22 ); ?>px;
              }
              .intro-heading { 
