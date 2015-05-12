@@ -197,6 +197,7 @@ function bootstrap_bob_customizer_panels( $wp_customize ) {
     	)
     );
     _bootstrap_bob_services_sections( $wp_customize );
+    _bootstrap_bob_services_individual_sections( $wp_customize );
 
     $wp_customize->add_panel(
     	'homepage_portfolio_section_panel',

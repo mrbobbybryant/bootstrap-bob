@@ -101,5 +101,42 @@
 			$('.btn-xl').css('background-color', to);
 		});
 	});
-	
+
+	/**
+	 * 
+	 *
+	 * Start of Services Section postMessage settings.
+	 */
+	//Services Section Title Controls
+	wp.customize('services_title_textbox', function( value ) {
+		value.bind(function(to) {
+			$('#services .section-heading').text(to);
+		});
+	});
+	wp.customize('services_title_font_range', function(value){
+		value.bind(function(to){
+			$('#services .section-heading').css('font-size', to + 'px');
+		});
+	});
+	wp.customize('services_title_font_color', function(value){
+		value.bind(function(to){
+			$('#services .section-heading').css('color', to);
+		});
+	});
+	//Services Section Subtitle Controls
+	wp.customize('services_subtitle_textbox', function( value ) {
+		value.bind(function(to) {
+			$('#services .section-subheading').text(to);
+		});
+	});
+	wp.customize('services_subtitle_font_range', function(value){
+		value.bind(function(to){
+			$('#services .section-subheading').css('font-size', to + 'px');
+		});
+	});
+	wp.customize('services_subtitle_font_color', function(value){
+		value.bind(function(to){
+			$('#services h3.text-muted').css('color', to);
+		});
+	});
 } )( jQuery );
